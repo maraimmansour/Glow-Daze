@@ -45,6 +45,13 @@
                 <li><a href="#stickers">STICKERS</a></li>
             </ul>
         </nav>
+        <div class="dark-mode-toggle-container">
+            <input type="checkbox" id="darkModeToggle" class="toggle-switch">
+            <label for="darkModeToggle" class="toggle-label">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </label>
+        </div>
     </header>
 
     <main>
@@ -1089,6 +1096,38 @@
                     hideActivityDetail();
                 }
             }
+        });
+        // --- Dark Mode Logic ---
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const DARK_MODE_KEY = 'glowdaze_darkMode';
+
+        // Function to set the theme based on the checkbox state
+        function setDarkMode(isDark) {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                // Update the checkbox state to match the theme
+                darkModeToggle.checked = true;
+            } else {
+                body.classList.remove('dark-mode');
+                darkModeToggle.checked = false;
+            }
+            // Save preference to localStorage for persistence
+            localStorage.setItem(DARK_MODE_KEY, isDark ? 'enabled' : 'disabled');
+        }
+
+        // 1. Check local storage on load
+        const savedTheme = localStorage.getItem(DARK_MODE_KEY);
+        if (savedTheme === 'enabled') {
+            setDarkMode(true);
+        } else {
+            // Default to light mode (or set based on disabled preference)
+            setDarkMode(false);
+        }
+
+        // 2. Add event listener to the toggle switch
+        darkModeToggle.addEventListener('change', (event) => {
+            setDarkMode(event.target.checked);
         });
     </script>
 </body>
