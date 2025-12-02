@@ -247,12 +247,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    /* Align to top */
     padding: 0 5%;
-    /* Percentage based padding for logo position */
     z-index: 1000;
     pointer-events: none;
-    /* Let clicks pass through empty space */
 }
 
 .logo-container {
@@ -322,7 +319,6 @@ nav ul li a.active {
 
 .toggle-switch {
     display: none;
-    /* Hide the default checkbox input */
 }
 
 .toggle-label {
@@ -330,7 +326,6 @@ nav ul li a.active {
     width: 60px;
     height: 30px;
     background-color: var(--yellow);
-    /* Yellow background for light mode */
     border-radius: 15px;
     cursor: pointer;
     position: relative;
@@ -338,7 +333,6 @@ nav ul li a.active {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* The circular thumb of the switch */
 .toggle-label:before {
     content: '';
     position: absolute;
@@ -351,7 +345,6 @@ nav ul li a.active {
     transition: transform 0.3s ease;
 }
 
-/* Icons for sun/moon */
 .sun-icon,
 .moon-icon {
     position: absolute;
@@ -365,24 +358,19 @@ nav ul li a.active {
 .sun-icon {
     right: 5px;
     opacity: 1;
-    /* Visible in light mode */
 }
 
 .moon-icon {
     left: 5px;
     opacity: 0;
-    /* Hidden in light mode */
 }
 
-/* Checked state (Dark Mode) */
 .toggle-switch:checked+.toggle-label {
     background-color: #222c55;
-    /* Dark blue background for dark mode */
 }
 
 .toggle-switch:checked+.toggle-label:before {
     transform: translateX(30px);
-    /* Move the circle to the right */
 }
 
 .toggle-switch:checked+.toggle-label .sun-icon {
@@ -640,7 +628,6 @@ body.dark-mode .character-name {
     display: inline-block;
 }
 
-/* Shared styles for Detail Card */
 .detail-card {
     flex: 0 0 350px;
     height: 500px;
@@ -676,7 +663,6 @@ body.dark-mode .character-name {
     text-align: center;
 }
 
-/* Back Button Style */
 .back-button {
     margin-top: 40px;
     padding: 10px 20px;
@@ -699,7 +685,6 @@ body.dark-mode .character-name {
 }
 
 .top-right-button {
-    /* Removed fixed positioning to keep it in flow within the header bar */
     margin-top: 0;
 }
 
@@ -1166,7 +1151,6 @@ body.dark-mode .character-name {
 /* --- Hamburger Menu --- */
 .hamburger-menu {
     display: none;
-    /* Hidden by default */
     background-color: var(--white);
     border: none;
     width: 50px;
@@ -1202,7 +1186,6 @@ body.dark-mode .hamburger-menu .bar {
 .mobile-nav-dropdown {
     position: absolute;
     top: 100%;
-    /* Below the hamburger */
     right: 0;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
@@ -1261,17 +1244,14 @@ body.dark-mode .mobile-nav-link {
 
     nav {
         display: none;
-        /* Hide standard nav */
     }
 
     .hamburger-menu {
         display: flex;
-        /* Show hamburger */
     }
 
     .header-controls {
         position: relative;
-        /* Keep it in flow */
     }
 
     /* Comics Mobile */
@@ -1279,209 +1259,11 @@ body.dark-mode .mobile-nav-link {
         max-width: 100%;
         height: auto;
         max-height: 60vh;
-        /* Reduced height to ensure buttons fit */
-        object-fit: contain;
-    }
-
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.coloring-row:hover {
-    transform: translateY(-5px);
-}
-
-.coloring-preview {
-    height: 100%;
-    width: 300px;
-    border-radius: 15px;
-    overflow: hidden;
-    background-color: #f0f0f0;
-    flex-shrink: 0;
-    border: 1px solid #ddd;
-}
-
-.maze-preview-portrait {
-    width: 250px;
-    height: 100%;
-}
-
-.button-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    max-width: 300px;
-}
-
-.button-stack .download-btn {
-    width: 100%;
-    text-align: center;
-}
-
-.coloring-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin-left: 30px;
-    padding-top: 10px;
-    height: 100%;
-}
-
-.coloring-name {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #5a5a87;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-.download-btn {
-    background-color: transparent;
-    color: #5a5a87;
-    border: 3px solid var(--pink-bubble);
-    padding: 10px 25px;
-    border-radius: 50px;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-    display: inline-block;
-}
-
-.download-btn:hover {
-    background-color: var(--pink-bubble);
-    color: white;
-    box-shadow: 0 0 15px var(--pink-bubble);
-    transform: translateY(-2px);
-}
-
-/* --- Hamburger Menu --- */
-.hamburger-menu {
-    display: none;
-    /* Hidden by default */
-    background-color: var(--white);
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    transition: background-color 0.3s ease;
-    z-index: 1002;
-}
-
-.hamburger-menu .bar {
-    width: 25px;
-    height: 3px;
-    background-color: var(--secondary-blue);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
-body.dark-mode .hamburger-menu {
-    background-color: #222c55;
-}
-
-body.dark-mode .hamburger-menu .bar {
-    background-color: var(--white);
-}
-
-/* Mobile Nav Dropdown */
-.mobile-nav-dropdown {
-    position: absolute;
-    top: 100%;
-    /* Below the hamburger */
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    min-width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 0;
-    transform: translateY(-20px);
-    pointer-events: none;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    margin-top: 10px;
-}
-
-body.dark-mode .mobile-nav-dropdown {
-    background-color: #222c55;
-}
-
-.mobile-nav-dropdown.active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.mobile-nav-dropdown ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    text-align: center;
-}
-
-.mobile-nav-link {
-    text-decoration: none;
-    color: #5a5a87;
-    font-weight: 700;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    display: block;
-    padding: 5px;
-}
-
-body.dark-mode .mobile-nav-link {
-    color: var(--white);
-}
-
-/* --- Media Queries for Mobile --- */
-@media (max-width: 768px) {
-    header {
-        padding: 0 5%;
-        align-items: flex-start;
-    }
-
-    nav {
-        display: none;
-        /* Hide standard nav */
-    }
-
-    .hamburger-menu {
-        display: flex;
-        /* Show hamburger */
-    }
-
-    .header-controls {
-        position: relative;
-        /* Keep it in flow */
-    }
-
-    /* Comics Mobile */
-    .comic-page {
-        max-width: 100%;
-        height: auto;
-        max-height: 60vh;
-        /* Reduced height to ensure buttons fit */
         object-fit: contain;
     }
 
     .page-container {
         flex-direction: row;
-        /* Keep row to show buttons on sides */
         align-items: center;
         justify-content: space-between;
         width: 100%;
@@ -1496,7 +1278,6 @@ body.dark-mode .mobile-nav-link {
 
     .reader-arrow {
         font-size: 2rem;
-        /* Smaller arrows on mobile */
         width: 40px;
         height: 40px;
     }
@@ -1526,12 +1307,7 @@ body.dark-mode .mobile-nav-link {
     }
 
     /* Characters Mobile */
-    .characters-container {
-        /* Width will be set by JS, but ensure items are full width */
-    }
-
     .character-card {
-        /* Flex basis set by JS or inline style, but ensure padding is good */
         padding: 0 5px;
     }
 
@@ -1542,7 +1318,6 @@ body.dark-mode .mobile-nav-link {
 
     .detail-content {
         flex-direction: column;
-        /* Text on top, card on bottom */
         gap: 20px;
     }
 
@@ -1558,10 +1333,6 @@ body.dark-mode .mobile-nav-link {
     }
 
     /* Activities Mobile */
-    .activity-card {
-        /* Flex basis set by JS */
-    }
-
     .coloring-row {
         flex-direction: column;
         height: auto;
@@ -1579,7 +1350,6 @@ body.dark-mode .mobile-nav-link {
         max-width: 300px;
         height: auto;
         aspect-ratio: 1/1.4;
-        /* Approximate A4 ratio */
     }
 
     .coloring-info {
@@ -1600,7 +1370,6 @@ body.dark-mode .mobile-nav-link {
 
     .sticker-wrapper {
         height: 200px;
-        /* Fixed height for mobile stickers */
     }
 
     /* Text wrapping for mobile */
