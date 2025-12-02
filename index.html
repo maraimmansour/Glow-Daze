@@ -1098,14 +1098,41 @@
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
         hamburgerBtn.addEventListener('click', () => {
-            mobileNavDropdown.classList.toggle('hidden');
-            mobileNavDropdown.classList.toggle('active');
+            // If open, close with transition: remove active, then add hidden after animation
+            if (mobileNavDropdown.classList.contains('active')) {
+                mobileNavDropdown.classList.remove('active');
+                setTimeout(() => mobileNavDropdown.classList.add('hidden'), 500);
+            } else {
+                // Open: ensure it's displayed then trigger active for transition
+                mobileNavDropdown.classList.remove('hidden');
+                // Force a frame so the transition fires reliably
+                requestAnimationFrame(() => mobileNavDropdown.classList.add('active'));
+            }
         });
 
         mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNavDropdown.classList.add('hidden');
+            link.addEventListener('click', (e) => {
+                // Close with transition
                 mobileNavDropdown.classList.remove('active');
+                setTimeout(() => mobileNavDropdown.classList.add('hidden'), 500);
+
+                // Perform the same navigation behavior as desktop nav links
+                const targetId = link.getAttribute('href');
+                hideActivityDetail();
+                if (targetId === '#characters') {
+                    showList();
+                    currentIndex = 0;
+                    updateCarouselPosition();
+                }
+                if (targetId === '#comics') {
+                    showCovers();
+                }
+
+                // Smooth scroll to section
+                const targetEl = document.querySelector(targetId);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
         });
 
@@ -1160,6 +1187,20 @@
             if (current && current !== 'activities') {
                 if (!coloringView.classList.contains('hidden')) {
                     hideActivityDetail();
+                }
+            }
+
+            // If the user scrolled away from Characters or Comics while in detail view,
+            // reset those views back to their list/cover state.
+            if (current && current !== 'characters') {
+                if (!detailContainer.classList.contains('hidden')) {
+                    showList();
+                }
+            }
+
+            if (current && current !== 'comics') {
+                if (!readerView.classList.contains('hidden')) {
+                    showCovers();
                 }
             }
         });
