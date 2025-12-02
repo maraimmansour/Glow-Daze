@@ -487,11 +487,13 @@ p {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
+    /* add horizontal padding so glows on edge cards have room */
+    padding: 0 48px;
 }
 
 .carousel-viewport {
-    width: 100%;
-    overflow: hidden;
+    width: calc(100% - 96px); /* account for wrapper horizontal padding */
+    overflow: hidden; /* keep visible card count consistent */
     max-width: 880px;
 }
 
@@ -590,6 +592,11 @@ body.dark-mode .character-name {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     flex-shrink: 0;
     margin: 0 10px;
+}
+
+.nav-arrow {
+    position: relative;
+    z-index: 1002;
 }
 
 .nav-arrow:hover {
