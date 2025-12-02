@@ -458,11 +458,15 @@ p {
 }
 
 .hero-image {
-    width: 100%;
-    max-width: 1400px;
+    width: 100vw;
     height: auto;
     display: block;
-    margin-top: 20px;
+    margin-top: 0;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
     -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
 }
@@ -1264,6 +1268,19 @@ body.dark-mode .mobile-nav-link {
 
 /* --- Media Queries for Mobile --- */
 @media (max-width: 768px) {
+    .hero-image {
+        width: 100vw;
+        height: auto;
+        margin-top: 0;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    }
+
     header {
         padding: 0 5%;
         align-items: center;
