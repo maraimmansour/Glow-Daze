@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow Daze</title>
+    <link rel="icon" type="image/png" href="icon.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Oswald:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+    </div>
+
+    <div id="mouse-trail-container"></div>
+
+    <header>
+        <div class="logo-container">
+            <a href="#home" class="nav-home-link">
+                <img src="logo.png" alt="Glow Daze Logo" class="main-logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#characters" class="nav-char-link">CHARACTERS</a></li>
+                <li><a href="#comics">COMICS</a></li>
+                <li><a href="#activities">ACTIVITIES</a></li>
+                <li><a href="#stickers">STICKERS</a></li>
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <div class="dark-mode-toggle-container">
+                <input type="checkbox" id="darkModeToggle" class="toggle-switch">
+                <label for="darkModeToggle" class="toggle-label">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </label>
+            </div>
+            <button class="hamburger-menu" aria-label="Toggle Navigation">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+        </div>
+        <div class="mobile-nav-dropdown hidden">
+            <ul>
+                <li><a href="#characters" class="mobile-nav-link">CHARACTERS</a></li>
+                <li><a href="#comics" class="mobile-nav-link">COMICS</a></li>
+                <li><a href="#activities" class="mobile-nav-link">ACTIVITIES</a></li>
+                <li><a href="#stickers" class="mobile-nav-link">STICKERS</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section id="home">
+            <picture>
+                <source media="(max-width: 768px)" srcset="hero_gd.png">
+                <img src="hero_image.png" alt="Glow Daze Hero Art" class="hero-image">
+            </picture>
+        </section>
+
+        <section id="characters">
+            <h2 id="char-title">Characters</h2>
+            <p class="subheader" id="char-subtitle">Meet Glow daze and her friends</p>
+
+            <div class="carousel-wrapper">
+                <div class="nav-arrow" id="list-prev">&lt;</div>
+
+                <div class="carousel-viewport">
+                    <div class="characters-container" id="characters-list">
+                    </div>
+                </div>
+
+                <div class="nav-arrow" id="list-next">&gt;</div>
+            </div>
+
+            <div id="character-detail" class="hidden">
+                <div class="detail-content">
+                    <div class="detail-text">
+                        <h3 id="detail-name">CHARACTER NAME</h3>
+
+                        <div class="detail-block">
+                            <span class="label-bubble">PERSONALITY:</span>
+                            <span id="detail-personality">Description here...</span>
+                        </div>
+
+                        <div class="detail-block">
+                            <span class="label-bubble">VIBE:</span>
+                            <span id="detail-vibe">Description here...</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-card">
+                        <img id="detail-img" src="" alt="Character">
+                        <div class="detail-species">SPECIES: <span id="detail-species">Type</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="back-button" class="back-button">
+                    &larr; Back to Characters
+                </button>
+            </div>
+        </section>
+
+        <section id="comics">
+            <div id="comics-header-wrapper">
+                <h2>Comics</h2>
+                <p class="subheader">Read the latest adventures.</p>
+            </div>
+
+            <div id="comic-covers-view">
+            </div>
+
+            <div id="comic-reader-view" class="hidden reader-mode">
+                <div class="reader-header-bar">
+                    <h3 id="reader-title">Chapter 1: The First Daze</h3>
+                    <button id="reader-back-button" class="back-button top-right-button">
+                        &larr; Back to Covers
+                    </button>
+                </div>
+
+                <div class="page-container">
+                    <div class="nav-arrow reader-arrow" id="page-prev">&lt;</div>
+                    <div class="page-wrapper">
+                        <img id="page-left" class="comic-page" src="" alt="Left Comic Page">
+                        <img id="page-right" class="comic-page" src="" alt="Right Comic Page">
+                    </div>
+                    <div class="nav-arrow reader-arrow" id="page-next">&gt;</div>
+                </div>
+
+                <div class="reader-footer">
+                    <p id="page-number-display" class="subheader">Pages 1-2 of X</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="activities">
+            <h2>Activities</h2>
+            <p class="subheader">Fun things to do.</p>
+
+            <div class="carousel-wrapper">
+                <div class="nav-arrow" id="activity-prev">&lt;</div>
+
+                <div class="carousel-viewport" id="activity-viewport">
+                    <div class="characters-container" id="activities-list">
+                        <!-- Activity cards will be injected here -->
+                    </div>
+                </div>
+
+                <div class="nav-arrow" id="activity-next">&gt;</div>
+            </div>
+
+            <div id="coloring-pages-view" class="hidden activity-detail-view">
+                <div class="activity-header-bar">
+                    <h3 class="activity-detail-title">Coloring Pages</h3>
+                    <button id="coloring-back-btn" class="back-button top-right-button">&larr; Back to Activities</button>
+                </div>
+                <div class="coloring-list-container" id="coloring-list">
+                    <!-- Rows will be injected here -->
+                </div>
+            </div>
+
+            <div id="mazes-pages-view" class="hidden activity-detail-view">
+                <div class="activity-header-bar">
+                    <h3 class="activity-detail-title">Mazes</h3>
+                    <button id="mazes-back-btn" class="back-button top-right-button">&larr; Back to Activities</button>
+                </div>
+                <div class="coloring-list-container" id="mazes-list">
+                </div>
+            </div>
+
+            <div id="wordsearch-pages-view" class="hidden activity-detail-view">
+                <div class="activity-header-bar">
+                    <h3 class="activity-detail-title">Word Search</h3>
+                    <button id="wordsearch-back-btn" class="back-button top-right-button">&larr; Back to Activities</button>
+                </div>
+                <div class="coloring-list-container" id="wordsearch-list">
+                </div>
+            </div>
+
+            <div id="crossword-pages-view" class="hidden activity-detail-view">
+                <div class="activity-header-bar">
+                    <h3 class="activity-detail-title">Crossword Puzzle</h3>
+                    <button id="crossword-back-btn" class="back-button top-right-button">&larr; Back to Activities</button>
+                </div>
+                <div class="coloring-list-container" id="crossword-list">
+                </div>
+            </div>
+
+            <div id="connect-pages-view" class="hidden activity-detail-view">
+                <div class="activity-header-bar">
+                    <h3 class="activity-detail-title">Connect the Dots</h3>
+                    <button id="connect-back-btn" class="back-button top-right-button">&larr; Back to Activities</button>
+                </div>
+                <div class="coloring-list-container" id="connect-list">
+                </div>
+            </div>
+
+            <div id="spot-pages-view" class="hidden activity-detail-view">
+                <div class="activity-header-bar">
+                    <h3 class="activity-detail-title">Spot the Differences</h3>
+                    <button id="spot-back-btn" class="back-button top-right-button">&larr; Back to Activities</button>
+                </div>
+                <div class="coloring-list-container" id="spot-list">
+                </div>
+            </div>
+        </section>
+
+        <section id="stickers">
+            <h2>Stickers</h2>
+            <p class="subheader">Collect them all by particpating in our events and hunts</p>
+
+            <div id="sticker-gallery-wrapper">
+                <div class="nav-arrow" id="sticker-prev">&lt;</div>
+
+                <div class="sticker-viewport">
+                    <div class="sticker-container" id="sticker-grid">
+                    </div>
+                </div>
+
+                <div class="nav-arrow" id="sticker-next">&gt;</div>
+            </div>
+
+            <p id="sticker-page-display" class="subheader"></p>
+        </section>
+    </main>
+
+    <script>
+        // --- Data ---
+        const characters = [
+            {
+                id: 'glowdaze',
+                name: 'GLOW DAZE (GD)',
+                species: 'ARCTIC FOX',
+                personality: "OPTIMISTIC CREATIVE WITH AN IMPULSIVE STREAK, WEARS HER HEART ON HER SLEEVE. WHEN SHE'S EXCITED, EVERYONE KNOWS IT; WHEN SHE'S STRESSED, SAME DEAL. ENTHUSIASTIC ABOUT ART AND PRONE TO GRAND AMBITIONS (12-HOUR NAP SCHEDULES INCLUDED). SOMETIMES DOUBTS HERSELF BUT BOUNCES BACK WITH HELP FROM FRIENDS. RELATABLE PROTAGONIST ENERGY; SHE FEELS EVERYTHING INTENSELY AND ISN'T AFRAID TO BE DRAMATIC ABOUT IT.",
+                vibe: 'GOLDEN RETRIEVER ENERGY IN FOX FORM, PASSIONATE DREAMER, "I CAN DO EVERYTHING!" (NARRATOR: SHE COULD NOT)',
+                img: 'char_glowdaze.png',
+                shadow: '#cbe7ee'
+            },
+            {
+                id: 'rocky',
+                name: 'ROCKY',
+                species: 'WOLF',
+                personality: "THE CALM, GROUNDING PRESENCE IN ANY CHAOS. CREATIVE AND OBSERVANT, OFTEN SKETCHING MOMENTS WHILE OTHERS LIVE THEM. GENTLY TEASING BUT DEEPLY SUPPORTIVE; HE SHOWS CARE THROUGH ACTIONS MORE THAN WORDS. DOESN'T GET RUFFLED EASILY AND HAS THAT STEADY, RELIABLE FRIEND ENERGY. LOW-KEY THE EMOTIONAL BACKBONE OF THE GROUP.",
+                vibe: 'QUIET CONFIDENCE, THE FRIEND WHO NOTICES WHEN YOU\'RE STRUGGLING BEFORE YOU SAY ANYTHING, "I MADE YOU TEA" ENERGY',
+                img: 'char_rocky.png',
+                shadow: '#e3acb4'
+            },
+            {
+                id: 'lana',
+                name: 'LANA',
+                species: 'CAT',
+                personality: "LOUD PERFECTIONIST WHO BRINGS INTENSITY TO EVERYTHING, EVEN RELAXATION (\"WE'RE DECOMPRESSING CORRECTLY\"). DETAIL-ORIENTED AND PASSIONATE ABOUT GETTING THINGS 'RIGHT'; PROBABLY COLOR-CODES HER NOTES AND HAS OPINIONS ABOUT KERNING. CAN BE A BIT MUCH, BUT IT COMES FROM GENUINELY CARING. WON'T HESITATE TO SPEAK UP IN CRITIQUES OR JUMP INTO THE ARENA TO DEFEND HER FRIENDS' WORK. ORGANIZED CHAOS INCARNATE.",
+                vibe: 'TYPE-A ENERGY, "I WILL HELP WHETHER YOU ASKED OR NOT," PROBABELT HAS STRONG FEELINGS ABOUT FONT CHOICES, ESPRESSO SHOT PERSONIFIED',
+                img: 'char_lana.png',
+                shadow: '#e2bef0'
+            },
+            {
+                id: 'finn',
+                name: 'FINN',
+                species: 'STOAT',
+                personality: "EASYGOING AND PERCEPTIVE WITH A DECEPTIVELY SHARP EYE FOR DETAIL. HIS LAID-BACK ATTITUDE IS STRATEGIC; HE KNOWS WHEN EFFORT ACTUALLY MATTERS AND WHEN EVERYONE'S JUST OVERTHINKING. DELIVERS SURPRISINGLY INSIGHTFUL ADVICE DISGUISED AS JOKES OR OFFHAND COMMENTS THAT PEOPLE DON'T REALIZE WERE HELPFUL UNTIL HOURS LATER. SWEET AND APPROACHABLE EXTERIOR MAKES EVERYONE COMFORTABLE AROUND HIM, AND BENEATH THE CHILL SURFACE IS A REFORMED OVERACHIEVER WHO LEARNED ABOUT BURNOUT THE HARD WAY. OCCASIONALLY SURPRISES EVERYONE WITH BURSTS OF INTENSE FOCUS THAT HINT AT HIS DRIVEN PAST SELF, THEN IMMEDIATELY GOES BACK TO NAPPING.",
+                vibe: 'WISE SLACKER, THE FRIEND WHO SAYS "OR HEAR ME OUT... WE COULD NOT STRESS ABOUT THIS" AND IS ACTUALLY RIGHT, DELIVERS LIFE ADVICE WHILE HALF-ASLEEP, SECRETLY THE MOST EMOTIONALLY INTELLIGENT ONE IN THE ROOM',
+                img: 'char_finn.png',
+                shadow: '#dddda0'
+            },
+            {
+                id: 'rexford',
+                name: 'PROFESSOR REXFORD',
+                species: 'CAT',
+                personality: "CHILL ON THE SURFACE, RAZOR-SHARP IN CLASS. DOESN’T WASTE WORDS, DOESN’T TOLERATE NONSENSE, BUT NEVER RAISES HIS VOICE EITHER — IT’S WORSE WHEN HE’S QUIET. TEACHES LIKE A PRO AND EXPECTS YOU TO KEEP UP. OUTSIDE LECTURES? COMPLETELY DIFFERENT GUY. YOU’LL CATCH HIM IN THE GYM RUNNING PICKUP GAMES WITH STUDENTS LIKE HE’S ONE OF THEM. SECRETLY PROUD WHEN YOU IMPROVE, JUST WON’T SAY IT OUT LOUD.",
+                vibe: 'COOL AUTHORITY, COACH ENERGY, “I ROASTED YOU BUT I ALSO PASSED YOU” AURA',
+                img: 'char_rexford.png',
+                shadow: '#cad6e2'
+            },
+            {
+                id: 'mirella',
+                name: 'PROFESSOR MIRELLA',
+                species: 'CHEETAH',
+                personality: "BUILT FOR EXCELLENCE AND ONLY EXCELLENCE. DOESN’T JOKE. DOESN’T PLAY. DOESN’T CARE IF YOU’RE TIRED. SHE HAS PUBLISHED MORE ARTICLES THAN YOU’VE READ AND DEFINITELY KNOWS IT. EVERY LECTURE IS ELITE-LEVEL, EVERY EXPECTATION IS HIGH, AND SHE NEVER LOWERS THE BAR — YOU CLIMB IT. INTIMIDATING? YES. LEGENDARY? ALSO YES. IF SHE NODS AT YOUR WORK, THAT’S BASICALLY A STANDING OVATION.",
+                vibe: 'ACADEMIC MENACE, ACHIEVEMENT MACHINE, “DISCIPLINE IS MY LOVE LANGUAGE” ENERGY',
+                img: 'char_mirella.png',
+                shadow: '#ffd1b8'
+            }
+        ];
+
+        const comics = [
+            { id: 1, title: 'Chapter 1: The First Daze', pages: 2, cover: 'chapter_1.png' },
+            { id: 2, title: 'Chapter 2: Heavy-Lifting Season', pages: 2, cover: 'chapter_2.png' },
+            { id: 3, title: 'Chapter 3: Winter, A Whisker Away', pages: 4, cover: 'chapter_3.png' },
+            { id: 4, title: 'Chapter 4: Critique Showdown', pages: 10, cover: 'chapter_4.png' },
+            { id: 5, title: 'Chapter 5: Sometimes, Healing looks like...', pages: 4, cover: 'chapter_5.png' }
+        ];
+
+        const stickers = [
+            'Glow Daze Banana.PNG', 'Glow Daze Blep.png', 'Glow Daze Canvas.png',
+            'Glow Daze Confused.PNG', 'Glow Daze Explosion.PNG', 'Glow Daze Heart.png',
+            'Glow Daze Hugs.png', 'Glow Daze Love.PNG', 'Glow Daze Mad.PNG',
+            'Glow Daze Naughty.png', 'Glow Daze Pat.png', 'Glow Daze Pillow.PNG',
+            'Glow Daze Pillow2.PNG', 'Glow Daze Sad.PNG', 'Glow Daze Sleepy.PNG',
+            'Glow Daze Smart.png', 'Glow Daze Studying.png', 'Glow Daze Sunkissed.png',
+            'Glow Daze Tiny.png', 'Glow Daze Tired.png', 'Glow Daze.png', 'Rocky.png'
+        ];
+
+        const activities = [
+            {
+                name: 'Coloring Pages',
+                description: 'Color pages of Glow Daze and her friends!',
+                img: 'stickers/Glow Daze Canvas.png',
+                id: 'coloring'
+            },
+            {
+                name: 'Mazes',
+                description: 'Help Glow Daze get to the other side of the maze!',
+                img: 'stickers/Glow Daze Sad.PNG',
+                id: 'mazes'
+            },
+            {
+                name: 'Word Search',
+                description: 'Help Glow Daze search for the correct words!',
+                img: 'stickers/Glow Daze Confused.PNG',
+                id: 'wordsearch'
+            },
+            {
+                name: 'Cross Word Puzzle',
+                description: 'Help Glow Daze guess the words to complete the puzzle!',
+                img: 'stickers/Glow Daze Smart.png',
+                id: 'crossword'
+            },
+            {
+                name: 'Connect the Dots',
+                description: 'Connect the dots to form an image!',
+                img: 'stickers/Glow Daze Banana.PNG',
+                id: 'connect'
+            },
+            {
+                name: 'Spot the Differences',
+                description: 'Spot the differences among two images!',
+                img: 'stickers/Glow Daze Studying.png',
+                id: 'spot'
+            }
+        ];
+
+        const coloringPages = [
+            'glow_daze.pdf',
+            'glow_daze_and_lana.pdf',
+            'glow_daze_and_rocky_1.pdf',
+            'glow_daze_and_rocky_2.pdf',
+            'lana.pdf',
+            'the_group.pdf',
+            'the_trio.pdf'
+        ];
+
+        const mazes = [
+            { file: 'maze_easy_1.pdf', answerKey: 'maze_easy_1_answerkey.pdf' },
+            { file: 'maze_meduim_1.pdf', answerKey: 'maze_meduim_1_answerkey.pdf' },
+            { file: 'maze_hard_1.pdf', answerKey: 'maze_hard_1_answerkey.pdf' }
+        ];
+
+        const wordSearches = [
+            { file: 'word_search_1.pdf', answerKey: 'word_search_1_answerkey.pdf' }
+        ];
+
+        const crosswords = [
+            { file: 'cross_word_puzzle_1.pdf', answerKey: 'cross_word_puzzle_1_answerkey.pdf' }
+        ];
+
+        const connectTheDots = [
+            { file: 'connect_the_dots_1.pdf', answerKey: 'connect_the_dots_1_answerkey.pdf' }
+        ];
+
+        const spotDifferences = [
+            { file: 'spot_the_differences_1.pdf', answerKey: 'spot_the_differences_1_answer_key.pdf' }
+        ];
+
+        // --- Character Carousel Elements ---
+        const listContainer = document.getElementById('characters-list');
+        const detailContainer = document.getElementById('character-detail');
+        const backButton = document.getElementById('back-button');
+        const charTitle = document.getElementById('char-title');
+        const charSubtitle = document.getElementById('char-subtitle');
+        const dName = document.getElementById('detail-name');
+        const dPersonality = document.getElementById('detail-personality');
+        const dVibe = document.getElementById('detail-vibe');
+        const dImg = document.getElementById('detail-img');
+        const dSpecies = document.getElementById('detail-species');
+        const prevArrow = document.getElementById('list-prev');
+        const nextArrow = document.getElementById('list-next');
+
+        let CHARACTERS_PER_VIEW = 3;
+        const totalCharacters = characters.length;
+        let maxIndex = totalCharacters - CHARACTERS_PER_VIEW;
+        let currentIndex = 0;
+
+        // --- Comic Elements ---
+        const comicsHeaderWrapper = document.getElementById('comics-header-wrapper');
+        const coversView = document.getElementById('comic-covers-view');
+        const readerView = document.getElementById('comic-reader-view');
+        const readerBackButton = document.getElementById('reader-back-button');
+        const pageLeft = document.getElementById('page-left');
+        const pageRight = document.getElementById('page-right');
+        const pagePrevArrow = document.getElementById('page-prev');
+        const pageNextArrow = document.getElementById('page-next');
+        const pageNumDisplay = document.getElementById('page-number-display');
+        const readerTitle = document.getElementById('reader-title');
+        const comicsSection = document.getElementById('comics');
+
+        let currentChapter = null;
+        let currentPageIndex = 0;
+
+        // --- Sticker Elements ---
+        const stickerGrid = document.getElementById('sticker-grid');
+        const stickerPrevArrow = document.getElementById('sticker-prev');
+        const stickerNextArrow = document.getElementById('sticker-next');
+
+        let STICKER_COLUMNS_PER_VIEW = 3;
+        // We will calculate maxStickerIndex based on columns later
+        let currentStickerPageIndex = 0;
+        let totalStickerPages = 0;
+
+
+        // --- Activity Elements ---
+        const activityListContainer = document.getElementById('activities-list');
+        const activityPrevArrow = document.getElementById('activity-prev');
+        const activityNextArrow = document.getElementById('activity-next');
+        const coloringView = document.getElementById('coloring-pages-view');
+        const coloringList = document.getElementById('coloring-list');
+        const coloringBackBtn = document.getElementById('coloring-back-btn');
+        const mazesView = document.getElementById('mazes-pages-view');
+        const mazesListContainer = document.getElementById('mazes-list');
+        const mazesBackBtn = document.getElementById('mazes-back-btn');
+
+        const wordSearchView = document.getElementById('wordsearch-pages-view');
+        const wordSearchList = document.getElementById('wordsearch-list');
+        const wordSearchBackBtn = document.getElementById('wordsearch-back-btn');
+
+        const crosswordView = document.getElementById('crossword-pages-view');
+        const crosswordList = document.getElementById('crossword-list');
+        const crosswordBackBtn = document.getElementById('crossword-back-btn');
+
+        const connectView = document.getElementById('connect-pages-view');
+        const connectList = document.getElementById('connect-list');
+        const connectBackBtn = document.getElementById('connect-back-btn');
+
+        const spotView = document.getElementById('spot-pages-view');
+        const spotList = document.getElementById('spot-list');
+        const spotBackBtn = document.getElementById('spot-back-btn');
+
+        const activitiesSection = document.getElementById('activities');
+        const activityCarouselWrapper = document.querySelector('#activities .carousel-wrapper');
+        const activityTitle = document.querySelector('#activities > h2');
+        const activitySubtitle = document.querySelector('#activities > .subheader');
+
+        let ACTIVITIES_PER_VIEW = 3;
+        let currentActivityIndex = 0;
+
+
+        // --- Character Carousel Functions ---
+        function renderCharacterCards() {
+            listContainer.innerHTML = '';
+
+            // Set container width dynamically to accommodate all characters
+            // Each view shows CHARACTERS_PER_VIEW (3) characters
+            const containerWidth = (characters.length / CHARACTERS_PER_VIEW) * 100;
+            listContainer.style.width = `${containerWidth}%`;
+
+            characters.forEach((char, index) => {
+                const card = document.createElement('div');
+                card.classList.add('character-card');
+                card.setAttribute('data-char', char.id);
+
+                // Set card width dynamically relative to the container
+                card.style.flex = `0 0 ${100 / characters.length}%`;
+
+                card.addEventListener('click', () => showDetail(index));
+
+                card.innerHTML = `
+                    <img src="${char.img}" alt="${char.name}" class="character-img">
+                    <div class="character-name">${char.name}</div>
+                `;
+                listContainer.appendChild(card);
+            });
+
+            // Update maxIndex based on current view
+            maxIndex = totalCharacters - CHARACTERS_PER_VIEW;
+
+            updateCarouselPosition();
+        }
+
+        function updateCarouselPosition() {
+            // Translate by the width of one character (relative to container)
+            const translationStep = 100 / characters.length;
+            const translation = currentIndex * translationStep;
+            listContainer.style.transform = `translateX(-${translation}%)`;
+
+            updateArrowState();
+        }
+
+        function updateArrowState() {
+            if (currentIndex === 0) {
+                prevArrow.classList.add('disabled');
+            } else {
+                prevArrow.classList.remove('disabled');
+            }
+
+            if (currentIndex >= maxIndex) {
+                nextArrow.classList.add('disabled');
+            } else {
+                nextArrow.classList.remove('disabled');
+            }
+        }
+
+        function nextCharacter() {
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateCarouselPosition();
+            }
+        }
+
+        function prevCharacter() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarouselPosition();
+            }
+        }
+
+        function showDetail(index) {
+            const char = characters[index];
+            dName.innerText = char.name;
+            dPersonality.innerText = char.personality;
+            dVibe.innerText = char.vibe;
+            dImg.src = char.img;
+            dSpecies.innerText = char.species;
+            dImg.style.filter = `drop-shadow(10px 10px 0px ${char.shadow})`;
+
+            document.querySelector('.carousel-wrapper').classList.add('hidden');
+            charTitle.classList.add('hidden');
+            charSubtitle.classList.add('hidden');
+            detailContainer.classList.remove('hidden');
+
+            document.querySelector('#characters').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function showList() {
+            detailContainer.classList.add('hidden');
+            document.querySelector('.carousel-wrapper').classList.remove('hidden');
+            charTitle.classList.remove('hidden');
+            charSubtitle.classList.remove('hidden');
+        }
+
+        // --- Comic Functions ---
+
+        function renderComicCovers() {
+            comicsHeaderWrapper.classList.remove('hidden');
+            coversView.innerHTML = '';
+            coversView.classList.add('comic-grid');
+
+            comics.forEach(comic => {
+                const coverWrapper = document.createElement('div');
+                coverWrapper.classList.add('comic-cover-wrapper');
+
+                const coverImg = document.createElement('img');
+                coverImg.classList.add('comic-cover-img');
+                coverImg.src = `covers/chapter_${comic.id}.png`;
+                coverImg.alt = comic.title;
+                coverImg.setAttribute('data-chapter', comic.id);
+
+                const coverCaption = document.createElement('div');
+                coverCaption.classList.add('comic-caption');
+                coverCaption.innerText = `CHAPTER ${comic.id}`;
+
+                coverWrapper.appendChild(coverImg);
+                coverWrapper.appendChild(coverCaption);
+
+                coverWrapper.addEventListener('click', () => startReading(comic));
+                coversView.appendChild(coverWrapper);
+            });
+            // Reset CSS for cover view
+            comicsSection.style.minHeight = '100vh';
+            comicsSection.style.justifyContent = 'center';
+            comicsSection.style.paddingTop = '140px';
+        }
+
+        function startReading(comic) {
+            currentChapter = comic;
+            currentPageIndex = 0;
+
+            comicsHeaderWrapper.classList.add('hidden');
+            coversView.classList.add('hidden');
+
+            readerTitle.innerText = currentChapter.title.toUpperCase();
+            readerView.classList.remove('hidden');
+
+            // Set CSS for full-screen reading experience
+            comicsSection.style.minHeight = '100vh';
+            comicsSection.style.justifyContent = 'flex-start';
+            comicsSection.style.paddingTop = '120px';
+
+            document.querySelector('#comics').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            updatePageDisplay();
+        }
+
+        function updatePageDisplay() {
+            const pagesPerView = (window.innerWidth <= 768) ? 1 : 2;
+            const totalPages = currentChapter.pages;
+
+            const page1Num = currentPageIndex * pagesPerView + 1;
+            const page2Num = currentPageIndex * pagesPerView + 2;
+
+            if (page1Num <= totalPages) {
+                pageLeft.src = `pages/chapter_${currentChapter.id}_${page1Num}.png`;
+                pageLeft.classList.remove('hidden');
+            } else {
+                pageLeft.classList.add('hidden');
+            }
+
+            if (pagesPerView > 1) {
+                if (page2Num <= totalPages) {
+                    pageRight.src = `pages/chapter_${currentChapter.id}_${page2Num}.png`;
+                    pageRight.classList.remove('hidden');
+                } else {
+                    pageRight.classList.add('hidden');
+                }
+            } else {
+                pageRight.classList.add('hidden');
+            }
+
+            const maxPageIndex = Math.ceil(totalPages / pagesPerView) - 1;
+
+            if (currentPageIndex > 0) {
+                pagePrevArrow.classList.remove('disabled');
+            } else {
+                pagePrevArrow.classList.add('disabled');
+            }
+
+            if (currentPageIndex < maxPageIndex) {
+                pageNextArrow.classList.remove('disabled');
+            } else {
+                pageNextArrow.classList.add('disabled');
+            }
+
+            let endPage = (page2Num > totalPages) ? totalPages : page2Num;
+            if (pagesPerView === 1) endPage = page1Num;
+
+            const displayPages = (page1Num === endPage) ? `Page ${page1Num} of ${totalPages}` :
+                `Pages ${page1Num}-${endPage} of ${totalPages}`;
+
+            pageNumDisplay.innerText = displayPages;
+        }
+
+        function nextPage() {
+            const totalPages = currentChapter.pages;
+            const pagesPerView = (window.innerWidth <= 768) ? 1 : 2;
+            const maxPageIndex = Math.ceil(totalPages / pagesPerView) - 1;
+            if (currentPageIndex < maxPageIndex) {
+                currentPageIndex++;
+                updatePageDisplay();
+            }
+        }
+
+        function prevPage() {
+            if (currentPageIndex > 0) {
+                currentPageIndex--;
+                updatePageDisplay();
+            }
+        }
+
+        function showCovers() {
+            comicsHeaderWrapper.classList.remove('hidden');
+            coversView.classList.remove('hidden');
+
+            readerView.classList.add('hidden');
+            currentChapter = null;
+
+            // Reset CSS for cover view
+            comicsSection.style.minHeight = '100vh';
+            comicsSection.style.justifyContent = 'center';
+            comicsSection.style.paddingTop = '140px';
+
+            document.querySelector('#comics').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // --- Sticker Functions ---
+
+        function getStickerName(fileName) {
+            let name = fileName.replace(/\.(png|PNG)$/, '');
+            return name;
+        }
+
+        function renderStickerGrid() {
+            stickerGrid.innerHTML = '';
+
+            // Group stickers into columns of 2
+            const columns = [];
+            for (let i = 0; i < stickers.length; i += 2) {
+                columns.push(stickers.slice(i, i + 2));
+            }
+
+            columns.forEach(columnStickers => {
+                const columnDiv = document.createElement('div');
+                columnDiv.classList.add('sticker-column');
+
+                columnStickers.forEach(fileName => {
+                    const stickerWrapper = document.createElement('div');
+                    stickerWrapper.classList.add('sticker-wrapper');
+
+                    const stickerImg = document.createElement('img');
+                    stickerImg.classList.add('sticker-img');
+                    stickerImg.src = `stickers/${fileName}`;
+                    stickerImg.alt = getStickerName(fileName);
+
+                    const stickerCaption = document.createElement('div');
+                    stickerCaption.classList.add('sticker-caption');
+                    stickerCaption.innerText = getStickerName(fileName);
+
+                    stickerWrapper.appendChild(stickerImg);
+                    stickerWrapper.appendChild(stickerCaption);
+                    columnDiv.appendChild(stickerWrapper);
+                });
+
+                stickerGrid.appendChild(columnDiv);
+            });
+
+            // Calculate total pages
+            // Total columns = columns.length
+            // View shows STICKER_COLUMNS_PER_VIEW (3)
+            // We scroll by 1 page (100% width) which is 3 columns
+            totalStickerPages = Math.ceil(columns.length / STICKER_COLUMNS_PER_VIEW);
+
+            updateStickerCarouselPosition();
+        }
+
+        function updateStickerCarouselPosition() {
+            // Translate by 100% per page
+            const translation = currentStickerPageIndex * 100;
+            stickerGrid.style.transform = `translateX(-${translation}%)`;
+
+            updateStickerArrowState();
+        }
+
+        function updateStickerArrowState() {
+            if (currentStickerPageIndex === 0) {
+                stickerPrevArrow.classList.add('disabled');
+            } else {
+                stickerPrevArrow.classList.remove('disabled');
+            }
+
+            if (currentStickerPageIndex >= totalStickerPages - 1) {
+                stickerNextArrow.classList.add('disabled');
+            } else {
+                stickerNextArrow.classList.remove('disabled');
+            }
+        }
+
+        function nextSticker() {
+            if (currentStickerPageIndex < totalStickerPages - 1) {
+                currentStickerPageIndex++;
+                updateStickerCarouselPosition();
+            }
+        }
+
+        function prevSticker() {
+            if (currentStickerPageIndex > 0) {
+                currentStickerPageIndex--;
+                updateStickerCarouselPosition();
+            }
+        }
+
+
+        // --- Activity Functions ---
+        function renderActivityCards() {
+            activityListContainer.innerHTML = '';
+
+            // Dynamic width calculation similar to characters
+            const containerWidth = (activities.length / ACTIVITIES_PER_VIEW) * 100;
+            activityListContainer.style.width = `${containerWidth}%`;
+
+            activities.forEach(act => {
+                const card = document.createElement('div');
+                card.classList.add('activity-card');
+
+                // Dynamic card width
+                card.style.flex = `0 0 ${100 / activities.length}%`;
+
+                card.innerHTML = `
+                    <div class="activity-img-wrapper">
+                        <img src="${act.img}" alt="${act.name}" class="activity-img">
+                    </div>
+                    <div class="activity-content">
+                        <h3 class="activity-title">${act.name}</h3>
+                        <p class="activity-desc">${act.description}</p>
+                        <button class="view-all-btn" onclick="handleActivityClick('${act.id}')">View All</button>
+                    </div>
+                `;
+                activityListContainer.appendChild(card);
+            });
+            updateActivityCarouselPosition();
+        }
+
+        function handleActivityClick(id) {
+            if (id === 'coloring') {
+                showColoringPages();
+            } else if (id === 'mazes') {
+                showMazes();
+            } else if (id === 'wordsearch') {
+                showGenericActivity(wordSearchView, wordSearchList, wordSearches, 'word_search');
+            } else if (id === 'crossword') {
+                showGenericActivity(crosswordView, crosswordList, crosswords, 'cross_word_puzzle');
+            } else if (id === 'connect') {
+                showGenericActivity(connectView, connectList, connectTheDots, 'connect_the_dots');
+            } else if (id === 'spot') {
+                showGenericActivity(spotView, spotList, spotDifferences, 'spot_the_differences');
+            }
+        }
+
+        function showColoringPages() {
+            activityCarouselWrapper.classList.add('hidden');
+            activityTitle.classList.add('hidden');
+            activitySubtitle.classList.add('hidden');
+            coloringView.classList.remove('hidden');
+
+            renderColoringList();
+
+            // Scroll to top of activities section
+            activitiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function hideActivityDetail() {
+            coloringView.classList.add('hidden');
+            mazesView.classList.add('hidden');
+            wordSearchView.classList.add('hidden');
+            crosswordView.classList.add('hidden');
+            connectView.classList.add('hidden');
+            spotView.classList.add('hidden');
+            activityCarouselWrapper.classList.remove('hidden');
+            activityTitle.classList.remove('hidden');
+            activitySubtitle.classList.remove('hidden');
+            activitiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function showMazes() {
+            activityCarouselWrapper.classList.add('hidden');
+            activityTitle.classList.add('hidden');
+            activitySubtitle.classList.add('hidden');
+            mazesView.classList.remove('hidden');
+
+            renderMazesList();
+            activitiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function parseMazeName(fileName) {
+            // Format: maze_difficulty_number.pdf -> Maze {number} ({Difficulty})
+            // Example: maze_easy_1.pdf -> Maze 1 (Easy)
+            const parts = fileName.replace('.pdf', '').split('_');
+            if (parts.length >= 3) {
+                const difficulty = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
+                const number = parts[2];
+                return `Maze ${number} (${difficulty})`;
+            }
+            return fileName;
+        }
+
+        function renderMazesList() {
+            mazesListContainer.innerHTML = '';
+            mazes.forEach(item => {
+                const row = document.createElement('div');
+                row.classList.add('coloring-row');
+
+                const name = parseMazeName(item.file);
+                const filePath = `activites/maze/${item.file}`;
+                const answerKeyPath = `activites/maze/${item.answerKey}`;
+
+                row.innerHTML = `
+                    <div class="coloring-preview maze-preview-portrait">
+                        <embed src="${filePath}#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="100%">
+                    </div>
+                    <div class="coloring-info">
+                        <div class="coloring-name">${name}</div>
+                        <div class="button-stack">
+                            <a href="${filePath}" download="${item.file}" target="_blank" class="download-btn">Download Page</a>
+                            <a href="${answerKeyPath}" download="${item.answerKey}" target="_blank" class="download-btn">Download Answer Key</a>
+                        </div>
+                    </div>
+                `;
+                mazesListContainer.appendChild(row);
+            });
+        }
+
+        function showGenericActivity(viewElement, listContainer, data, folderName) {
+            activityCarouselWrapper.classList.add('hidden');
+            activityTitle.classList.add('hidden');
+            activitySubtitle.classList.add('hidden');
+            viewElement.classList.remove('hidden');
+
+            renderGenericList(listContainer, data, folderName);
+            activitiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function renderGenericList(container, data, folderName) {
+            container.innerHTML = '';
+            data.forEach(item => {
+                const row = document.createElement('div');
+                row.classList.add('coloring-row');
+
+                // Naming logic: replace underscores with spaces, remove extension, capitalize first letter
+                let name = item.file.replace('.pdf', '').replace(/_/g, ' ');
+                name = name.charAt(0).toUpperCase() + name.slice(1);
+
+                const filePath = `activites/${folderName}/${item.file}`;
+                const answerKeyPath = `activites/${folderName}/${item.answerKey}`;
+
+                row.innerHTML = `
+                    <div class="coloring-preview maze-preview-portrait">
+                        <embed src="${filePath}#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="100%">
+                    </div>
+                    <div class="coloring-info">
+                        <div class="coloring-name">${name}</div>
+                        <div class="button-stack">
+                            <a href="${filePath}" download="${item.file}" target="_blank" class="download-btn">Download Page</a>
+                            <a href="${answerKeyPath}" download="${item.answerKey}" target="_blank" class="download-btn">Download Answer Key</a>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function renderColoringList() {
+            coloringList.innerHTML = '';
+            coloringPages.forEach(filename => {
+                const row = document.createElement('div');
+                row.classList.add('coloring-row');
+
+                const name = filename.replace(/_/g, ' ').replace('.pdf', '').toUpperCase();
+                // Note: 'activites' is the folder name on disk (typo), so we use that path
+                const filePath = `activites/coloring_pages/${filename}`;
+
+                row.innerHTML = `
+                    <div class="coloring-preview">
+                        <embed src="${filePath}#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="100%">
+                    </div>
+                    <div class="coloring-info">
+                        <div class="coloring-name">${name}</div>
+                        <a href="${filePath}" download="${filename}" target="_blank" class="download-btn">Download Page</a>
+                    </div>
+                `;
+                coloringList.appendChild(row);
+            });
+        }
+
+        function updateActivityCarouselPosition() {
+            const translationStep = 100 / activities.length;
+            const translation = currentActivityIndex * translationStep;
+            activityListContainer.style.transform = `translateX(-${translation}%)`;
+
+            updateActivityArrowState();
+        }
+
+        function updateActivityArrowState() {
+            const maxIndex = activities.length - ACTIVITIES_PER_VIEW;
+
+            if (currentActivityIndex === 0) {
+                activityPrevArrow.classList.add('disabled');
+            } else {
+                activityPrevArrow.classList.remove('disabled');
+            }
+
+            if (currentActivityIndex >= maxIndex) {
+                activityNextArrow.classList.add('disabled');
+            } else {
+                activityNextArrow.classList.remove('disabled');
+            }
+        }
+
+        function nextActivity() {
+            const maxIndex = activities.length - ACTIVITIES_PER_VIEW;
+            if (currentActivityIndex < maxIndex) {
+                currentActivityIndex++;
+                updateActivityCarouselPosition();
+            }
+        }
+
+        function prevActivity() {
+            if (currentActivityIndex > 0) {
+                currentActivityIndex--;
+                updateActivityCarouselPosition();
+            }
+        }
+
+
+        // --- Mouse Trail Logic ---
+        const trailContainer = document.getElementById('mouse-trail-container');
+        let sparkleCounter = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            sparkleCounter++;
+            if (sparkleCounter % 7 !== 0) return;
+
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+
+            const symbols = ['❅', '❆', '❄'];
+            const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+            sparkle.innerHTML = randomSymbol;
+
+            sparkle.style.left = e.clientX + 'px';
+            sparkle.style.top = e.clientY + 'px';
+
+            const size = Math.random() * 8 + 6;
+            sparkle.style.fontSize = size + 'px';
+
+            const duration = Math.random() * 1.5 + 0.8;
+            sparkle.style.animationDuration = `${duration}s`;
+
+            trailContainer.appendChild(sparkle);
+
+            sparkle.addEventListener('animationend', () => {
+                sparkle.remove();
+            });
+        });
+
+        // --- Event Listeners and Initialization ---
+
+        nextArrow.addEventListener('click', nextCharacter);
+        prevArrow.addEventListener('click', prevCharacter);
+
+        readerBackButton.addEventListener('click', showCovers);
+
+        pagePrevArrow.addEventListener('click', prevPage);
+        pageNextArrow.addEventListener('click', nextPage);
+
+        stickerPrevArrow.addEventListener('click', prevSticker);
+        stickerNextArrow.addEventListener('click', nextSticker);
+
+        activityPrevArrow.addEventListener('click', prevActivity);
+        activityNextArrow.addEventListener('click', nextActivity);
+
+        // Back Button Listeners
+        coloringBackBtn.addEventListener('click', hideActivityDetail);
+        mazesBackBtn.addEventListener('click', hideActivityDetail);
+        wordSearchBackBtn.addEventListener('click', hideActivityDetail);
+        crosswordBackBtn.addEventListener('click', hideActivityDetail);
+        connectBackBtn.addEventListener('click', hideActivityDetail);
+        spotBackBtn.addEventListener('click', hideActivityDetail);
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateResponsiveVars();
+
+            renderCharacterCards();
+            renderComicCovers();
+            renderStickerGrid();
+            renderActivityCards();
+
+            window.addEventListener('resize', () => {
+                updateResponsiveVars();
+                renderCharacterCards();
+                renderStickerGrid();
+                renderActivityCards();
+                if (currentChapter) updatePageDisplay();
+            });
+        });
+
+        function updateResponsiveVars() {
+            if (window.innerWidth <= 768) {
+                CHARACTERS_PER_VIEW = 1;
+                ACTIVITIES_PER_VIEW = 1;
+                STICKER_COLUMNS_PER_VIEW = 1;
+            } else {
+                CHARACTERS_PER_VIEW = 3;
+                ACTIVITIES_PER_VIEW = 3;
+                STICKER_COLUMNS_PER_VIEW = 3;
+            }
+        }
+
+        // --- Mobile Menu Logic ---
+        const hamburgerBtn = document.querySelector('.hamburger-menu');
+        const mobileNavDropdown = document.querySelector('.mobile-nav-dropdown');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNavDropdown.classList.toggle('hidden');
+            mobileNavDropdown.classList.toggle('active');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavDropdown.classList.add('hidden');
+                mobileNavDropdown.classList.remove('active');
+            });
+        });
+
+        backButton.addEventListener('click', function () {
+            showList();
+            document.querySelector('#characters').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        document.querySelectorAll('nav a, .nav-home-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+
+                hideActivityDetail();
+
+                if (targetId === '#characters') {
+                    showList();
+                    currentIndex = 0;
+                    updateCarouselPosition();
+                }
+
+                if (targetId === '#comics') {
+                    showCovers();
+                }
+
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        const sections = document.querySelectorAll('section');
+        const navLi = document.querySelectorAll('nav ul li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLi.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
+
+            if (current && current !== 'activities') {
+                if (!coloringView.classList.contains('hidden')) {
+                    hideActivityDetail();
+                }
+            }
+        });
+        // --- Dark Mode Logic ---
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const DARK_MODE_KEY = 'glowdaze_darkMode';
+
+        // Function to set the theme based on the checkbox state
+        function setDarkMode(isDark) {
+            if (isDark) {
+                body.classList.add('dark-mode');
+                // Update the checkbox state to match the theme
+                darkModeToggle.checked = true;
+            } else {
+                body.classList.remove('dark-mode');
+                darkModeToggle.checked = false;
+            }
+            // Save preference to localStorage for persistence
+            localStorage.setItem(DARK_MODE_KEY, isDark ? 'enabled' : 'disabled');
+        }
+
+        // 1. Check local storage on load
+        const savedTheme = localStorage.getItem(DARK_MODE_KEY);
+        if (savedTheme === 'enabled') {
+            setDarkMode(true);
+        } else {
+            // Default to light mode (or set based on disabled preference)
+            setDarkMode(false);
+        }
+
+        // 2. Add event listener to the toggle switch
+        darkModeToggle.addEventListener('change', (event) => {
+            setDarkMode(event.target.checked);
+        });
+    </script>
+</body>
+
+</html>
