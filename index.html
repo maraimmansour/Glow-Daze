@@ -45,12 +45,27 @@
                 <li><a href="#stickers">STICKERS</a></li>
             </ul>
         </nav>
-        <div class="dark-mode-toggle-container">
-            <input type="checkbox" id="darkModeToggle" class="toggle-switch">
-            <label for="darkModeToggle" class="toggle-label">
-                <span class="sun-icon">☀️</span>
-                <span class="moon-icon">🌙</span>
-            </label>
+        <div class="header-controls">
+            <div class="dark-mode-toggle-container">
+                <input type="checkbox" id="darkModeToggle" class="toggle-switch">
+                <label for="darkModeToggle" class="toggle-label">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </label>
+            </div>
+            <button class="hamburger-menu" aria-label="Toggle Navigation">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+        </div>
+        <div class="mobile-nav-dropdown hidden">
+            <ul>
+                <li><a href="#characters" class="mobile-nav-link">CHARACTERS</a></li>
+                <li><a href="#comics" class="mobile-nav-link">COMICS</a></li>
+                <li><a href="#activities" class="mobile-nav-link">ACTIVITIES</a></li>
+                <li><a href="#stickers" class="mobile-nav-link">STICKERS</a></li>
+            </ul>
         </div>
     </header>
 
@@ -388,9 +403,9 @@
         const prevArrow = document.getElementById('list-prev');
         const nextArrow = document.getElementById('list-next');
 
-        const CHARACTERS_PER_VIEW = 3;
+        let CHARACTERS_PER_VIEW = 3;
         const totalCharacters = characters.length;
-        const maxIndex = totalCharacters - CHARACTERS_PER_VIEW;
+        let maxIndex = totalCharacters - CHARACTERS_PER_VIEW;
         let currentIndex = 0;
 
         // --- Comic Elements ---
@@ -414,7 +429,7 @@
         const stickerPrevArrow = document.getElementById('sticker-prev');
         const stickerNextArrow = document.getElementById('sticker-next');
 
-        const STICKER_COLUMNS_PER_VIEW = 3;
+        let STICKER_COLUMNS_PER_VIEW = 3;
         // We will calculate maxStickerIndex based on columns later
         let currentStickerPageIndex = 0;
         let totalStickerPages = 0;
@@ -452,7 +467,7 @@
         const activityTitle = document.querySelector('#activities > h2');
         const activitySubtitle = document.querySelector('#activities > .subheader');
 
-        const ACTIVITIES_PER_VIEW = 3;
+        let ACTIVITIES_PER_VIEW = 3;
         let currentActivityIndex = 0;
 
 
@@ -481,6 +496,10 @@
                 `;
                 listContainer.appendChild(card);
             });
+
+            // Update maxIndex based on current view
+            maxIndex = totalCharacters - CHARACTERS_PER_VIEW;
+
             updateCarouselPosition();
         }
 
@@ -599,7 +618,7 @@
         }
 
         function updatePageDisplay() {
-            const pagesPerView = 2;
+            const pagesPerView = (window.innerWidth <= 768) ? 1 : 2;
             const totalPages = currentChapter.pages;
 
             const page1Num = currentPageIndex * pagesPerView + 1;
@@ -612,9 +631,13 @@
                 pageLeft.classList.add('hidden');
             }
 
-            if (page2Num <= totalPages) {
-                pageRight.src = `pages/chapter_${currentChapter.id}_${page2Num}.png`;
-                pageRight.classList.remove('hidden');
+            if (pagesPerView > 1) {
+                if (page2Num <= totalPages) {
+                    pageRight.src = `pages/chapter_${currentChapter.id}_${page2Num}.png`;
+                    pageRight.classList.remove('hidden');
+                } else {
+                    pageRight.classList.add('hidden');
+                }
             } else {
                 pageRight.classList.add('hidden');
             }
@@ -633,7 +656,8 @@
                 pageNextArrow.classList.add('disabled');
             }
 
-            const endPage = (page2Num > totalPages) ? totalPages : page2Num;
+            let endPage = (page2Num > totalPages) ? totalPages : page2Num;
+            if (pagesPerView === 1) endPage = page1Num;
 
             const displayPages = (page1Num === endPage) ? `Page ${page1Num} of ${totalPages}` :
                 `Pages ${page1Num}-${endPage} of ${totalPages}`;
@@ -643,7 +667,8 @@
 
         function nextPage() {
             const totalPages = currentChapter.pages;
-            const maxPageIndex = Math.ceil(totalPages / 2) - 1;
+            const pagesPerView = (window.innerWidth <= 768) ? 1 : 2;
+            const maxPageIndex = Math.ceil(totalPages / pagesPerView) - 1;
             if (currentPageIndex < maxPageIndex) {
                 currentPageIndex++;
                 updatePageDisplay();
@@ -1037,10 +1062,49 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
+            updateResponsiveVars();
+
             renderCharacterCards();
             renderComicCovers();
             renderStickerGrid();
             renderActivityCards();
+
+            window.addEventListener('resize', () => {
+                updateResponsiveVars();
+                renderCharacterCards();
+                renderStickerGrid();
+                renderActivityCards();
+                if (currentChapter) updatePageDisplay();
+            });
+        });
+
+        function updateResponsiveVars() {
+            if (window.innerWidth <= 768) {
+                CHARACTERS_PER_VIEW = 1;
+                ACTIVITIES_PER_VIEW = 1;
+                STICKER_COLUMNS_PER_VIEW = 1;
+            } else {
+                CHARACTERS_PER_VIEW = 3;
+                ACTIVITIES_PER_VIEW = 3;
+                STICKER_COLUMNS_PER_VIEW = 3;
+            }
+        }
+
+        // --- Mobile Menu Logic ---
+        const hamburgerBtn = document.querySelector('.hamburger-menu');
+        const mobileNavDropdown = document.querySelector('.mobile-nav-dropdown');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNavDropdown.classList.toggle('hidden');
+            mobileNavDropdown.classList.toggle('active');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavDropdown.classList.add('hidden');
+                mobileNavDropdown.classList.remove('active');
+            });
         });
 
         backButton.addEventListener('click', function () {
