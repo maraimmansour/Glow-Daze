@@ -71,7 +71,10 @@
 
     <main>
         <section id="home">
-            <img src="hero_image.png" alt="Glow Daze Hero Art" class="hero-image">
+            <picture>
+                <source media="(max-width: 768px)" srcset="hero_gd.png">
+                <img src="hero_image.png" alt="Glow Daze Hero Art" class="hero-image">
+            </picture>
         </section>
 
         <section id="characters">
@@ -168,7 +171,7 @@
             <div id="coloring-pages-view" class="hidden activity-detail-view">
                 <div class="activity-header-bar">
                     <h3 class="activity-detail-title">Coloring Pages</h3>
-                    <button id="coloring-back-btn" class="back-button top-right-button">Back to Activities</button>
+                    <button id="coloring-back-btn" class="back-button top-right-button">&larr; Back to Activities</button>
                 </div>
                 <div class="coloring-list-container" id="coloring-list">
                     <!-- Rows will be injected here -->
@@ -178,7 +181,7 @@
             <div id="mazes-pages-view" class="hidden activity-detail-view">
                 <div class="activity-header-bar">
                     <h3 class="activity-detail-title">Mazes</h3>
-                    <button id="mazes-back-btn" class="back-button top-right-button">Back to Activities</button>
+                    <button id="mazes-back-btn" class="back-button top-right-button">&larr; Back to Activities</button>
                 </div>
                 <div class="coloring-list-container" id="mazes-list">
                 </div>
@@ -187,7 +190,7 @@
             <div id="wordsearch-pages-view" class="hidden activity-detail-view">
                 <div class="activity-header-bar">
                     <h3 class="activity-detail-title">Word Search</h3>
-                    <button id="wordsearch-back-btn" class="back-button top-right-button">Back to Activities</button>
+                    <button id="wordsearch-back-btn" class="back-button top-right-button">&larr; Back to Activities</button>
                 </div>
                 <div class="coloring-list-container" id="wordsearch-list">
                 </div>
@@ -196,7 +199,7 @@
             <div id="crossword-pages-view" class="hidden activity-detail-view">
                 <div class="activity-header-bar">
                     <h3 class="activity-detail-title">Crossword Puzzle</h3>
-                    <button id="crossword-back-btn" class="back-button top-right-button">Back to Activities</button>
+                    <button id="crossword-back-btn" class="back-button top-right-button">&larr; Back to Activities</button>
                 </div>
                 <div class="coloring-list-container" id="crossword-list">
                 </div>
@@ -205,7 +208,7 @@
             <div id="connect-pages-view" class="hidden activity-detail-view">
                 <div class="activity-header-bar">
                     <h3 class="activity-detail-title">Connect the Dots</h3>
-                    <button id="connect-back-btn" class="back-button top-right-button">Back to Activities</button>
+                    <button id="connect-back-btn" class="back-button top-right-button">&larr; Back to Activities</button>
                 </div>
                 <div class="coloring-list-container" id="connect-list">
                 </div>
@@ -214,7 +217,7 @@
             <div id="spot-pages-view" class="hidden activity-detail-view">
                 <div class="activity-header-bar">
                     <h3 class="activity-detail-title">Spot the Differences</h3>
-                    <button id="spot-back-btn" class="back-button top-right-button">Back to Activities</button>
+                    <button id="spot-back-btn" class="back-button top-right-button">&larr; Back to Activities</button>
                 </div>
                 <div class="coloring-list-container" id="spot-list">
                 </div>
