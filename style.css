@@ -1,3 +1,12 @@
+/* --- Custom Font --- */
+@font-face {
+    font-family: 'Sailors';
+    src: url('fonts/Sailors.otf') format('opentype'),
+        url('fonts/Sailors.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
 :root {
     /* Color Palette */
     --primary-blue: #8ecae6;
@@ -31,7 +40,7 @@
 }
 
 body {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Sailors', Arial, sans-serif;
     background: radial-gradient(circle, #c2e3fe 0%, #a4d6ff 50%, #63b9ff 100%);
     color: var(--text-color);
     overflow-x: hidden;
@@ -81,6 +90,10 @@ body.dark-mode .sparkle {
 body.dark-mode .detail-text h3,
 body.dark-mode .coloring-name,
 body.dark-mode .download-btn {
+    color: white;
+}
+
+body.dark-mode .detail-block {
     color: white;
 }
 
@@ -290,7 +303,7 @@ nav ul {
 nav ul li a {
     text-decoration: none;
     color: #5a5a87;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 1.1rem;
     letter-spacing: 0.5px;
     transition: color 0.3s;
@@ -419,6 +432,7 @@ section {
 }
 
 h2 {
+    font-family: 'Sailors', Arial, sans-serif;
     color: #5a5a87;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
@@ -427,12 +441,14 @@ h2 {
 }
 
 p {
+    font-family: 'Sailors', Arial, sans-serif;
     font-size: 1.5rem;
     color: #5a5a87;
     max-width: 600px;
 }
 
 .subheader {
+    font-family: 'Sailors', Arial, sans-serif;
     font-size: 1.5rem;
     color: #5a5a87;
     margin-bottom: 30px;
@@ -507,7 +523,7 @@ p {
 
 .character-name {
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 900;
     color: #5a5a87;
     padding: 10px 20px;
     border-radius: 20px;
@@ -565,7 +581,8 @@ body.dark-mode .character-name {
 /* --- Character Detail View --- */
 #character-detail {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 20px;
     width: 100%;
@@ -601,6 +618,7 @@ body.dark-mode .character-name {
 }
 
 .detail-text h3 {
+    font-family: 'Sailors', Arial, sans-serif;
     font-size: 4rem;
     margin-top: 0;
     margin-bottom: 30px;
@@ -611,18 +629,19 @@ body.dark-mode .character-name {
 
 .detail-block {
     margin-bottom: 25px;
-    font-family: 'Fredoka', sans-serif;
+    font-family: 'Sailors', Arial, sans-serif;
     font-size: 1.1rem;
     line-height: 1.5;
-    color: white;
+    color: #5a5a87;
 }
 
 .label-bubble {
+    font-family: 'Sailors', Arial, sans-serif;
     background-color: var(--pink-bubble);
     color: white;
     padding: 5px 15px;
     border-radius: 20px;
-    font-weight: 700;
+    font-weight: 900;
     margin-right: 10px;
     text-transform: uppercase;
     display: inline-block;
@@ -653,8 +672,9 @@ body.dark-mode .character-name {
 }
 
 .detail-species {
+    font-family: 'Sailors', Arial, sans-serif;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 900;
     text-transform: uppercase;
     color: #5a5a87;
     margin-top: auto;
@@ -664,6 +684,8 @@ body.dark-mode .character-name {
 }
 
 .back-button {
+    font-family: 'Sailors', Arial, sans-serif;
+    font-weight: 700;
     margin-top: 20px;
     padding: 10px 20px;
     background-color: var(--pink-bubble);
@@ -671,8 +693,8 @@ body.dark-mode .character-name {
     border: none;
     border-radius: 50px;
     font-size: 1.0rem;
-    font-weight: 700;
     cursor: pointer;
+    white-space: nowrap;
     text-transform: uppercase;
     transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -722,7 +744,7 @@ body.dark-mode .character-name {
 .comic-caption {
     margin-top: 15px;
     font-size: 1.2rem;
-    font-weight: 700;
+    font-weight: 900;
     color: white;
     text-transform: uppercase;
     padding: 5px 0px;
@@ -768,6 +790,7 @@ body.dark-mode .character-name {
 }
 
 #reader-title {
+    font-family: 'Sailors', Arial, sans-serif;
     color: white;
     margin: 0;
     font-size: 3rem;
@@ -821,7 +844,7 @@ body.dark-mode .character-name {
 
 #page-number-display {
     margin: 0;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /* --- STICKERS SECTION STYLES --- */
@@ -885,9 +908,9 @@ body.dark-mode .character-name {
 .sticker-caption {
     position: absolute;
     bottom: -15px;
-    font-family: 'Fredoka', sans-serif;
+    font-family: 'Sailors', Arial, sans-serif;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     color: transparent;
     text-align: center;
     white-space: nowrap;
@@ -993,8 +1016,9 @@ body.dark-mode .character-name {
 }
 
 .activity-title {
+    font-family: 'Sailors', Arial, sans-serif;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 900;
     color: #5a5a87;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -1002,7 +1026,7 @@ body.dark-mode .character-name {
 }
 
 .activity-desc {
-    font-family: 'Fredoka', sans-serif;
+    font-family: 'Sailors', Arial, sans-serif;
     font-size: 1rem;
     color: #5a5a87;
     text-align: center;
@@ -1011,12 +1035,13 @@ body.dark-mode .character-name {
 }
 
 .view-all-btn {
+    font-family: 'Sailors', Arial, sans-serif;
+    font-weight: 700;
     background-color: var(--pink-bubble);
     color: white;
     border: none;
     padding: 10px 25px;
     border-radius: 50px;
-    font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1048,6 +1073,7 @@ body.dark-mode .character-name {
 }
 
 .activity-detail-title {
+    font-family: 'Sailors', Arial, sans-serif;
     font-size: 3rem;
     color: white;
     text-transform: uppercase;
@@ -1119,8 +1145,9 @@ body.dark-mode .character-name {
 }
 
 .coloring-name {
+    font-family: 'Sailors', Arial, sans-serif;
     font-size: 1.8rem;
-    font-weight: 700;
+    font-weight: 900;
     color: #5a5a87;
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -1132,7 +1159,7 @@ body.dark-mode .character-name {
     border: 3px solid var(--pink-bubble);
     padding: 10px 25px;
     border-radius: 50px;
-    font-weight: 700;
+    font-weight: 900;
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
@@ -1224,7 +1251,7 @@ body.dark-mode .mobile-nav-dropdown {
 .mobile-nav-link {
     text-decoration: none;
     color: #5a5a87;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 1.2rem;
     text-transform: uppercase;
     display: block;
