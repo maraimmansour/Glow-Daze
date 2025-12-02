@@ -7,6 +7,10 @@
     font-style: normal;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     /* Color Palette */
     --primary-blue: #8ecae6;
@@ -1234,7 +1238,7 @@ body.dark-mode .hamburger-menu .bar {
 }
 
 body.dark-mode .mobile-nav-dropdown {
-    background-color: #222c55;
+    background-color: rgba(34, 44, 85, 0.95);
 }
 
 .mobile-nav-dropdown.active {
