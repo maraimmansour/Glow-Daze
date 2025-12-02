@@ -684,7 +684,7 @@
             }
         }
 
-        function showCovers() {
+        function showCovers(noScroll = false) {
             comicsHeaderWrapper.classList.remove('hidden');
             coversView.classList.remove('hidden');
 
@@ -696,7 +696,9 @@
             comicsSection.style.justifyContent = 'center';
             comicsSection.style.paddingTop = '140px';
 
-            document.querySelector('#comics').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (!noScroll) {
+                document.querySelector('#comics').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         // --- Sticker Functions ---
@@ -1200,7 +1202,7 @@
 
             if (current && current !== 'comics') {
                 if (!readerView.classList.contains('hidden')) {
-                    showCovers();
+                    showCovers(true);
                 }
             }
         });
