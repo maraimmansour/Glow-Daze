@@ -487,13 +487,11 @@ p {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
-    /* add horizontal padding so glows on edge cards have room */
-    padding: 0 48px;
 }
 
 .carousel-viewport {
-    width: calc(100% - 96px); /* account for wrapper horizontal padding */
-    overflow: hidden; /* keep visible card count consistent */
+    width: 100%;
+    overflow: hidden;
     max-width: 880px;
 }
 
@@ -516,25 +514,15 @@ p {
     height: 380px;
 }
 
-/* Allow glow to extend outside the card without being clipped */
-.character-card,
-.activity-card,
-.comic-cover-wrapper,
-.sticker-wrapper {
-    overflow: visible;
-}
-
 .character-img {
     max-height: 80%;
     max-width: 80%;
     width: auto;
     object-fit: contain;
-    /* soften and increase spread so glow looks smoother */
-    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.18));
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
     transition: transform 0.3s ease;
     display: block;
     margin: auto;
-    margin-bottom: 12px;
 }
 
 .character-img:hover {
@@ -592,11 +580,6 @@ body.dark-mode .character-name {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     flex-shrink: 0;
     margin: 0 10px;
-}
-
-.nav-arrow {
-    position: relative;
-    z-index: 1002;
 }
 
 .nav-arrow:hover {
@@ -774,8 +757,7 @@ body.dark-mode .character-name {
     height: 300px;
     object-fit: cover;
     border-radius: 8px;
-    /* layered, softer glow to avoid harsh edges */
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.35), 0 0 25px 8px var(--comic-glow);
+    box-shadow: 0 0 10px 5px var(--comic-glow);
     border: 1px solid rgba(255, 255, 255, 0.5);
     transition: box-shadow 0.3s ease, border-radius 0.3s ease, transform 0.3s ease;
 }
@@ -794,7 +776,7 @@ body.dark-mode .character-name {
 }
 
 .comic-cover-wrapper:hover .comic-cover-img {
-    box-shadow: 0 10px 30px rgba(240, 214, 226, 0.45), 0 0 32px 12px var(--comic-glow-hover);
+    box-shadow: 0 0 15px 8px var(--comic-glow-hover);
     transform: translateY(-5px) scale(1.03);
 }
 
@@ -936,12 +918,11 @@ body.dark-mode .character-name {
     height: auto;
     object-fit: contain;
     transition: filter 0.3s ease, transform 0.3s ease;
-    /* slightly larger, softer glow */
-    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.85));
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
 }
 
 .sticker-wrapper:hover .sticker-img {
-    filter: drop-shadow(0 0 22px var(--pink-bubble));
+    filter: drop-shadow(0 0 15px var(--pink-bubble));
     transform: scale(1.1);
 }
 
@@ -1047,8 +1028,7 @@ body.dark-mode .character-name {
     max-height: 180px;
     width: auto;
     object-fit: contain;
-    /* soften activity image glow */
-    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.18));
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
     transition: transform 0.3s ease;
 }
 
