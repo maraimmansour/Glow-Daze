@@ -514,18 +514,33 @@ p {
     height: 380px;
 }
 
+/* Allow glow to extend outside the card without being clipped */
+.character-card,
+.activity-card,
+.comic-cover-wrapper,
+.sticker-wrapper {
+    overflow: visible;
+}
+
 .character-img {
     max-height: 80%;
     max-width: 80%;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+    /* soften and increase spread so glow looks smoother */
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.18));
     transition: transform 0.3s ease;
     display: block;
     margin: auto;
+    margin-bottom: 12px;
 }
 
 .character-img:hover {
+    transform: scale(1.05);
+}
+
+/* When hovering the whole card (or any child like the name), apply both effects */
+.character-card:hover .character-img {
     transform: scale(1.05);
 }
 
@@ -542,6 +557,14 @@ p {
 }
 
 .character-name:hover {
+    background-color: var(--pink-bubble);
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(183, 134, 156, 0.4);
+}
+
+/* When hovering the whole card (or any child like the image), bubble the name */
+.character-card:hover .character-name {
     background-color: var(--pink-bubble);
     color: white;
     transform: translateY(-5px);
@@ -744,7 +767,8 @@ body.dark-mode .character-name {
     height: 300px;
     object-fit: cover;
     border-radius: 8px;
-    box-shadow: 0 0 10px 5px var(--comic-glow);
+    /* layered, softer glow to avoid harsh edges */
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.35), 0 0 25px 8px var(--comic-glow);
     border: 1px solid rgba(255, 255, 255, 0.5);
     transition: box-shadow 0.3s ease, border-radius 0.3s ease, transform 0.3s ease;
 }
@@ -763,7 +787,7 @@ body.dark-mode .character-name {
 }
 
 .comic-cover-wrapper:hover .comic-cover-img {
-    box-shadow: 0 0 15px 8px var(--comic-glow-hover);
+    box-shadow: 0 10px 30px rgba(240, 214, 226, 0.45), 0 0 32px 12px var(--comic-glow-hover);
     transform: translateY(-5px) scale(1.03);
 }
 
@@ -905,11 +929,12 @@ body.dark-mode .character-name {
     height: auto;
     object-fit: contain;
     transition: filter 0.3s ease, transform 0.3s ease;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+    /* slightly larger, softer glow */
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.85));
 }
 
 .sticker-wrapper:hover .sticker-img {
-    filter: drop-shadow(0 0 15px var(--pink-bubble));
+    filter: drop-shadow(0 0 22px var(--pink-bubble));
     transform: scale(1.1);
 }
 
@@ -1015,7 +1040,8 @@ body.dark-mode .character-name {
     max-height: 180px;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+    /* soften activity image glow */
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.18));
     transition: transform 0.3s ease;
 }
 
