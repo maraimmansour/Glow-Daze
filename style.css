@@ -456,9 +456,10 @@ p {
     font-size: 1.5rem;
     color: #5a5a87;
     margin-bottom: 30px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 .hero-image {
@@ -1217,7 +1218,7 @@ body.dark-mode .character-name {
 .hamburger-menu .bar {
     width: 25px;
     height: 3px;
-    background-color: var(--secondary-blue);
+    background-color: #63b9ff;
     border-radius: 2px;
     transition: all 0.3s ease;
 }
@@ -1295,15 +1296,19 @@ body.dark-mode .mobile-nav-link {
 /* --- Footer Styles --- */
 .glow-daze-footer {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 40px 20px;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 20px 20px;
+    /* reduced vertical padding */
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-top: 2px solid rgba(255, 255, 255, 0.2);
-    margin-top: 60px;
+    margin-top: 40px;
+    /* slightly reduced top margin */
     gap: 30px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    min-height: 200px;
+    /* reduced min-height to decrease overall footer height */
 }
 
 body.dark-mode .glow-daze-footer {
@@ -1315,13 +1320,17 @@ body.dark-mode .glow-daze-footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 0;
+    flex: 1;
+    justify-content: center;
 }
 
 /* Footer Socials Section */
 .footer-socials {
     gap: 20px;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .social-icon {
@@ -1372,17 +1381,26 @@ body.dark-mode .social-img-dm {
 
 /* Footer Center Section */
 .footer-center {
-    text-align: left;
+    text-align: center;
     flex: 1;
-    max-width: 600px;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    height: 100%;
+    gap: 0;
 }
 
 .footer-center-top {
     display: flex;
     align-items: flex-start;
     gap: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     font-size: 1.1rem;
+    width: 100%;
+    flex: 2;
+    text-align: left;
 }
 
 .footer-logo-container {
@@ -1428,6 +1446,9 @@ body.dark-mode #footer-logo-img-dm {
     margin: 0;
     line-height: 1.5;
     width: 100%;
+    flex: 1;
+    min-width: 0;
+    text-align: left;
 }
 
 body.dark-mode .footer-description {
@@ -1439,13 +1460,15 @@ body.dark-mode .footer-description {
     /* scale the credit text to fit smaller screens instead of truncating */
     font-size: clamp(0.5rem, 1.2vw, 0.72rem);
     color: var(--text-color);
-    margin: 12px 0 8px 0;
-    display: block;
-    width: 100%; /* match the description width */
-    white-space: nowrap; /* keep credits on a single line */
-    /* allow the font to shrink rather than truncating with ellipsis */
-    padding: 6px 0; /* slight top & bottom padding */
-    text-align: left;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+    white-space: nowrap;
+    padding: 6px 0;
+    text-align: center;
 }
 
 body.dark-mode .footer-credits-line {
@@ -1454,6 +1477,9 @@ body.dark-mode .footer-credits-line {
 
 .credit-separator {
     opacity: 0.6;
+    padding: 0 10px;
+    /* add space before and after the separator */
+    display: inline-block;
 }
 
 .credit-link {
@@ -1477,7 +1503,11 @@ body.dark-mode .footer-credits-line {
     font-size: 0.8rem;
     color: var(--text-color);
     opacity: 0.8;
-    margin-top: 10px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
 }
 
 body.dark-mode .footer-copyright {
@@ -1498,11 +1528,12 @@ body.dark-mode .footer-copyright {
     height: 55px;
     border-radius: 50%;
     background-color: transparent;
-    color: white; /* light-mode arrow color */
+    color: white;
+    /* light-mode arrow color */
     border: none;
     font-size: 1.8rem;
     font-weight: 900;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
     cursor: pointer;
     transition: all 0.25s ease;
     display: flex;
@@ -1571,9 +1602,14 @@ body.dark-mode .back-to-top-label {
 
     .footer-credits-line {
         text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        white-space: normal;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .credit-separator {
+        display: none;
     }
 
     /* ensure footer sections stack in the order: socials, center, back-to-top */
@@ -1584,6 +1620,11 @@ body.dark-mode .back-to-top-label {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    /* stack social icons vertically on mobile */
+    .footer-socials {
+        flex-direction: row;
     }
 
     .footer-center {
@@ -1773,4 +1814,3 @@ body.dark-mode .back-to-top-label {
         overflow-wrap: break-word;
     }
 }
-
