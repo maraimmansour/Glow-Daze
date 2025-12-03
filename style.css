@@ -1292,6 +1292,250 @@ body.dark-mode .mobile-nav-link {
     color: var(--white);
 }
 
+/* --- Footer Styles --- */
+.glow-daze-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    margin-top: 60px;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+body.dark-mode .glow-daze-footer {
+    background: rgba(34, 44, 85, 0.2);
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Footer Socials Section */
+.footer-socials {
+    gap: 20px;
+    flex-direction: row;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.social-img-lm {
+    display: block;
+}
+
+.social-img-dm {
+    display: none;
+}
+
+body.dark-mode .social-img-lm {
+    display: none;
+}
+
+body.dark-mode .social-img-dm {
+    display: block;
+}
+
+.social-icon img {
+    width: 65%;
+    height: 65%;
+    object-fit: contain;
+    transition: transform 0.22s ease;
+}
+
+/* Show a pink bubble behind the icon on hover (preserve icon colors) */
+.social-icon:hover {
+    background-color: var(--pink-bubble);
+    border-radius: 50%;
+    padding: 6px;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(183, 134, 156, 0.28);
+}
+
+.social-icon:hover img {
+    transform: scale(1.05);
+}
+
+/* Footer Center Section */
+.footer-center {
+    text-align: left;
+    flex: 1;
+    max-width: 600px;
+}
+
+.footer-center-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.footer-logo-container {
+    flex-shrink: 0;
+}
+
+.footer-logo {
+    display: inline-block;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.footer-logo-img {
+    width: 70px;
+    height: auto;
+    transition: filter 0.3s ease;
+    display: block;
+}
+
+#footer-logo-img-lm {
+    display: block;
+}
+
+#footer-logo-img-dm {
+    display: none;
+}
+
+body.dark-mode #footer-logo-img-lm {
+    display: none;
+}
+
+body.dark-mode #footer-logo-img-dm {
+    display: block;
+}
+
+.footer-logo:hover .footer-logo-img {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+}
+
+.footer-description {
+    font-family: 'Sailors', Arial, sans-serif;
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.5;
+    width: 100%;
+}
+
+body.dark-mode .footer-description {
+    color: var(--white);
+}
+
+.footer-credits-line {
+    font-family: 'Sailors', Arial, sans-serif;
+    /* scale the credit text to fit smaller screens instead of truncating */
+    font-size: clamp(0.5rem, 1.2vw, 0.72rem);
+    color: var(--text-color);
+    margin: 12px 0 8px 0;
+    display: block;
+    width: 100%; /* match the description width */
+    white-space: nowrap; /* keep credits on a single line */
+    /* allow the font to shrink rather than truncating with ellipsis */
+    padding: 6px 0; /* slight top & bottom padding */
+    text-align: left;
+}
+
+body.dark-mode .footer-credits-line {
+    color: var(--white);
+}
+
+.credit-separator {
+    opacity: 0.6;
+}
+
+.credit-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    background-color: var(--pink-bubble);
+    padding: 4px 9px;
+    border-radius: 14px;
+    transition: all 0.25s ease;
+    display: inline-block;
+}
+
+.credit-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(155, 93, 113, 0.45);
+}
+
+.footer-copyright {
+    font-family: 'Sailors', Arial, sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+body.dark-mode .footer-copyright {
+    color: var(--white);
+}
+
+/* Footer Back-to-Top Button */
+.footer-back-to-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.back-to-top-btn {
+    font-family: 'Sailors', Arial, sans-serif;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: transparent;
+    color: white; /* light-mode arrow color */
+    border: none;
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dark mode arrow color */
+body.dark-mode .back-to-top-btn {
+    color: #5a5a87;
+}
+
+.back-to-top-btn:hover {
+    background-color: var(--pink-bubble);
+    color: white;
+    transform: scale(1.12) translateY(-3px);
+    box-shadow: 0 8px 24px rgba(183, 134, 156, 0.35);
+}
+
+/* Label below the back-to-top button */
+.back-to-top-label {
+    font-family: 'Sailors', Arial, sans-serif;
+    font-size: 0.75rem;
+    color: var(--text-color);
+    margin-top: 6px;
+    opacity: 0.9;
+    text-transform: lowercase;
+}
+
+body.dark-mode .back-to-top-label {
+    color: var(--white);
+}
+
 /* --- Media Queries for Mobile --- */
 @media (max-width: 768px) {
     .hero-image {
@@ -1305,6 +1549,45 @@ body.dark-mode .mobile-nav-link {
         margin-right: -50vw;
         -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
         mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    }
+
+    /* Responsive footer: stack sections vertically in mobile, and scale text */
+    .glow-daze-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 28px 18px;
+    }
+
+    .footer-center-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-description {
+        font-size: clamp(0.85rem, 2.6vw, 1rem);
+    }
+
+    .footer-credits-line {
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* ensure footer sections stack in the order: socials, center, back-to-top */
+    .footer-socials,
+    .footer-center,
+    .footer-back-to-top {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-center {
+        max-width: 540px;
     }
 
     header {

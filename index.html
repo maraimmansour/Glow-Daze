@@ -243,6 +243,55 @@
         </section>
     </main>
 
+    <footer class="glow-daze-footer">
+        <div class="footer-section footer-socials">
+            <a href="https://chat.whatsapp.com/Dfcwkk5mupA35RVNCPiQux" target="_blank" class="social-icon" aria-label="WhatsApp">
+                <img class="social-img-lm" src="socials/whatsapp_lm.png" alt="WhatsApp">
+                <img class="social-img-dm" src="socials/whatsapp_dm.png" alt="WhatsApp">
+            </a>
+            <a href="https://instagram.com/ritd_gdclub" target="_blank" class="social-icon" aria-label="Instagram">
+                <img class="social-img-lm" src="socials/instagram_lm.png" alt="Instagram">
+                <img class="social-img-dm" src="socials/instagram_dm.png" alt="Instagram">
+            </a>
+            <a href="https://linkedin.com/company/ritd-graphic-design-club" target="_blank" class="social-icon" aria-label="LinkedIn">
+                <img class="social-img-lm" src="socials/linkedin_lm.png" alt="LinkedIn">
+                <img class="social-img-dm" src="socials/linkedin_dm.png" alt="LinkedIn">
+            </a>
+        </div>
+
+        <div class="footer-section footer-center">
+            <div class="footer-center-top">
+                <div class="footer-logo-container">
+                    <a href="https://gdclub.ritdubai.ae/" target="_blank" class="footer-logo">
+                        <img id="footer-logo-img-lm" class="footer-logo-img" src="socials/gd_lm.png" alt="Glow Daze GD Club">
+                        <img id="footer-logo-img-dm" class="footer-logo-img" src="socials/gd_dm.png" alt="Glow Daze GD Club">
+                    </a>
+                </div>
+                <p class="footer-description">
+                    Glow Daze is the mascot of the Graphic Design Club. A bright, playful Arctic fox ready to spark ideas and creativity across campus.
+                </p>
+            </div>
+
+            <div class="footer-credits-line">
+                <span>Designed by <a href="https://www.linkedin.com/in/mira-m-ismail/" target="_blank" class="credit-link">Mira Ismail</a> • Images & Comics • Stickers</span>
+                <span class="credit-separator">|</span>
+                <span>Stickers by <a href="https://www.linkedin.com/in/taniaabdulaziz/" target="_blank" class="credit-link">Tania Aziz</a></span>
+                <span class="credit-separator">|</span>
+                <span>Website by <a href="https://www.linkedin.com/in/mariam-m-mahmoud" target="_blank" class="credit-link">Mariam Mahmoud</a></span>
+            </div>
+
+            <div class="footer-copyright">
+                © 2025 Graphic Design Club, RIT Dubai
+            </div>
+        </div>
+
+        <div class="footer-section footer-back-to-top">
+            <button id="back-to-top-btn" class="back-to-top-btn" aria-label="Back to top">
+                ↑
+            </button>
+        </div>
+    </footer>
+
     <script>
         // --- Data ---
         const characters = [
@@ -1206,6 +1255,55 @@
                 }
             }
         });
+
+        // --- Footer Logic ---
+        const backToTopBtn = document.getElementById('back-to-top-btn');
+        const footerLogoLm = document.getElementById('footer-logo-img-lm');
+        const footerLogoDm = document.getElementById('footer-logo-img-dm');
+
+        // Back to top button functionality
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Header logo behavior: go to home unless already at home, then go to footer
+        const navHomeLink = document.querySelector('.nav-home-link');
+        const footerEl = document.querySelector('footer');
+        if (navHomeLink) {
+            navHomeLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const atHomeHash = (window.location.hash === '#home');
+                const nearTop = window.scrollY < 120;
+                if (atHomeHash || nearTop) {
+                    if (footerEl) footerEl.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    // navigate to home section
+                    const homeSection = document.getElementById('home');
+                    if (homeSection) {
+                        homeSection.scrollIntoView({ behavior: 'smooth' });
+                        history.replaceState(null, '', '#home');
+                    } else {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                }
+            });
+        }
+
+        // Show/hide back to top button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.opacity = '1';
+                backToTopBtn.style.pointerEvents = 'auto';
+            } else {
+                backToTopBtn.style.opacity = '0.5';
+                backToTopBtn.style.pointerEvents = 'auto';
+            }
+        });
+
+        // Initial opacity for back to top button
+        backToTopBtn.style.opacity = '0.5';
+        backToTopBtn.style.transition = 'opacity 0.3s ease';
+
         // --- Dark Mode Logic ---
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
