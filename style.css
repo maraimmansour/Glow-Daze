@@ -50,8 +50,13 @@ body {
     color: var(--text-color);
     overflow-x: hidden;
     min-height: 100vh;
-    cursor: default;
+    /* cursor: url('./Mouse/cursor.cur'), auto; */ 
 }
+
+/* Pointer styling */
+/*button, a {
+    cursor: url('./Mouse/pointer.cur'), auto;
+/*}*/
 
 /* Prevent scrolling when detail views are open */
 body.no-scroll {
