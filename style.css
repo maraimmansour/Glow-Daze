@@ -150,7 +150,7 @@ body.dark-mode .subheader {
 
 body.dark-mode h2 {
     color: var(--white);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    text-shadow: none; /* Removed dark shadow */
 }
 
 body.dark-mode nav {
@@ -525,7 +525,6 @@ body.dark-mode .character-name {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     flex-shrink: 0;
     margin: 0 10px;
 }
@@ -1065,7 +1064,6 @@ body.dark-mode .character-name {
     font-size: 3rem;
     color: white;
     text-transform: uppercase;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     margin: 0;
     animation: fadeIn 0.5s ease;
 }
@@ -1505,7 +1503,6 @@ body.dark-mode .footer-copyright {
     border: none;
     font-size: 1.8rem;
     font-weight: 900;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
     cursor: pointer;
     transition: all 0.25s ease;
     display: flex;
@@ -1654,7 +1651,6 @@ body.dark-mode .back-to-top-label {
 .sparkle {
     position: absolute;
     color: #ffffff;
-    text-shadow: 0 0 4px #c2e2f7, 0 0 8px #ffffff;
     opacity: 0.8;
     user-select: none;
     pointer-events: none;
