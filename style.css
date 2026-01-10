@@ -70,7 +70,7 @@ body.no-scroll {
     overflow-y: auto;
     z-index: 900;
     background: var(--site-bg);
-    padding: 140px 20px 100px; /* Retained the incoming change for padding */
+    padding: 0 20px 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,7 +80,7 @@ body.no-scroll {
 }
 
 #character-detail {
-    padding-top: 140px; /* Retained the HEAD branch change */
+    padding-top: 140px;
 }
 
 /* Enable custom scrollbar for all detail views */
@@ -407,7 +407,7 @@ p {
     width: 100vw;
     height: auto;
     display: block;
-    margin-top: 0;
+    margin-top: 400;
     position: relative;
     left: 50%;
     right: 50%;
