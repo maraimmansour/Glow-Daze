@@ -108,15 +108,17 @@
                         </div>
                     </div>
 
-                    <div class="detail-card">
-                        <img id="detail-img" src="" alt="Character">
-                        <div class="detail-species">SPECIES: <span id="detail-species">Type</span>
+                    <div class="detail-card-column">
+                        <div class="detail-card">
+                            <img id="detail-img" src="" alt="Character">
+                            <div class="detail-species">SPECIES: <span id="detail-species">Type</span>
+                            </div>
                         </div>
+                        <button id="back-button" class="back-button">
+                            &larr; Back to Characters
+                        </button>
                     </div>
                 </div>
-                <button id="back-button" class="back-button">
-                    &larr; Back to Characters
-                </button>
             </div>
         </section>
 
@@ -282,11 +284,14 @@
             </div>
 
             <div class="footer-credits-line">
-                <span> Images • Comics • Stickers Designed by <a href="https://www.linkedin.com/in/mira-m-ismail/" target="_blank" class="credit-link">Mira Ismail </a></span>
+                <span> Images • Comics • Stickers Designed by <a href="https://www.linkedin.com/in/mira-m-ismail/"
+                        target="_blank" class="credit-link">Mira Ismail </a></span>
                 <span class="credit-separator">|</span>
-                <span> Stickers Designed by <a href="https://www.linkedin.com/in/taniaabdulaziz/" target="_blank" class="credit-link">Tania Aziz </a></span>
+                <span> Stickers Designed by <a href="https://www.linkedin.com/in/taniaabdulaziz/" target="_blank"
+                        class="credit-link">Tania Aziz </a></span>
                 <span class="credit-separator">|</span>
-                <span> Website Developed by <a href="https://www.linkedin.com/in/mariam-m-mahmoud" target="_blank" class="credit-link">Mariam Mahmoud </a></span>
+                <span> Website Developed by <a href="https://www.linkedin.com/in/mariam-m-mahmoud" target="_blank"
+                        class="credit-link">Mariam Mahmoud </a></span>
             </div>
 
             <div class="footer-copyright">
@@ -340,6 +345,7 @@
                 img: 'char_finn.png',
                 shadow: '#dddda0'
             },
+            /*
             {
                 id: 'rexford',
                 name: 'PROFESSOR REXFORD',
@@ -358,6 +364,7 @@
                 img: 'char_mirella.png',
                 shadow: '#ffd1b8'
             }
+            */
         ];
 
         const comics = [
@@ -613,8 +620,10 @@
             charTitle.classList.add('hidden');
             charSubtitle.classList.add('hidden');
             detailContainer.classList.remove('hidden');
+            document.body.classList.add('no-scroll');
 
-            document.querySelector('#characters').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Ensure the detail view starts at the top
+            detailContainer.scrollTop = 0;
         }
 
         function showList() {
@@ -622,6 +631,9 @@
             document.querySelector('.carousel-wrapper').classList.remove('hidden');
             charTitle.classList.remove('hidden');
             charSubtitle.classList.remove('hidden');
+            document.body.classList.remove('no-scroll');
+            // Scroll back to the characters section
+            document.querySelector('#characters').scrollIntoView({ behavior: 'auto', block: 'start' });
         }
 
         // --- Comic Functions ---
@@ -666,13 +678,13 @@
 
             readerTitle.innerText = currentChapter.title.toUpperCase();
             readerView.classList.remove('hidden');
+            document.body.classList.add('no-scroll');
+            readerView.scrollTop = 0;
 
             // Set CSS for full-screen reading experience
             comicsSection.style.minHeight = '100vh';
             comicsSection.style.justifyContent = 'flex-start';
             comicsSection.style.paddingTop = '120px';
-
-            document.querySelector('#comics').scrollIntoView({ behavior: 'smooth', block: 'start' });
 
             updatePageDisplay();
         }
@@ -748,6 +760,7 @@
 
             readerView.classList.add('hidden');
             currentChapter = null;
+            document.body.classList.remove('no-scroll');
 
             // Reset CSS for cover view
             comicsSection.style.minHeight = '100vh';
@@ -755,7 +768,7 @@
             comicsSection.style.paddingTop = '140px';
 
             if (!noScroll) {
-                document.querySelector('#comics').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.querySelector('#comics').scrollIntoView({ behavior: 'auto', block: 'start' });
             }
         }
 
@@ -897,11 +910,10 @@
             activityTitle.classList.add('hidden');
             activitySubtitle.classList.add('hidden');
             coloringView.classList.remove('hidden');
+            document.body.classList.add('no-scroll');
+            coloringView.scrollTop = 0;
 
             renderColoringList();
-
-            // Scroll to top of activities section
-            activitiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function hideActivityDetail() {
@@ -914,7 +926,8 @@
             activityCarouselWrapper.classList.remove('hidden');
             activityTitle.classList.remove('hidden');
             activitySubtitle.classList.remove('hidden');
-            activitiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.body.classList.remove('no-scroll');
+            activitiesSection.scrollIntoView({ behavior: 'auto', block: 'start' });
         }
 
         function showMazes() {
@@ -922,9 +935,10 @@
             activityTitle.classList.add('hidden');
             activitySubtitle.classList.add('hidden');
             mazesView.classList.remove('hidden');
+            document.body.classList.add('no-scroll');
+            mazesView.scrollTop = 0;
 
             renderMazesList();
-            activitiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function parseMazeName(fileName) {
@@ -970,9 +984,10 @@
             activityTitle.classList.add('hidden');
             activitySubtitle.classList.add('hidden');
             viewElement.classList.remove('hidden');
+            document.body.classList.add('no-scroll');
+            viewElement.scrollTop = 0;
 
             renderGenericList(listContainer, data, folderName);
-            activitiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function renderGenericList(container, data, folderName) {
@@ -1198,7 +1213,6 @@
 
         backButton.addEventListener('click', function () {
             showList();
-            document.querySelector('#characters').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
 
         document.querySelectorAll('nav a, .nav-home-link').forEach(anchor => {
