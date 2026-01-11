@@ -42,6 +42,7 @@
                 <li><a href="#characters" class="nav-char-link">CHARACTERS</a></li>
                 <li><a href="#comics">COMICS</a></li>
                 <li><a href="#activities">ACTIVITIES</a></li>
+                <li><a href="#quiz">QUIZ</a></li>
                 <li><a href="#stickers">STICKERS</a></li>
             </ul>
         </nav>
@@ -64,6 +65,7 @@
                 <li><a href="#characters" class="mobile-nav-link">CHARACTERS</a></li>
                 <li><a href="#comics" class="mobile-nav-link">COMICS</a></li>
                 <li><a href="#activities" class="mobile-nav-link">ACTIVITIES</a></li>
+                <li><a href="#quiz" class="mobile-nav-link">QUIZ</a></li>
                 <li><a href="#stickers" class="mobile-nav-link">STICKERS</a></li>
             </ul>
         </div>
@@ -227,6 +229,50 @@
                 </div>
                 <div class="coloring-list-container" id="spot-list">
                 </div>
+            </div>
+        </section>
+<section id="quiz">
+            <h2>Which Character Are You?</h2>
+            <p class="subheader">Take the quiz to find out!</p>
+
+            <!-- Quiz Intro View -->
+            <div id="quiz-intro" class="quiz-card">
+                <p class="quiz-intro-text">Answer 8 questions to discover which Glow Daze character matches your
+                    personality!</p>
+                <button id="quiz-start-btn" class="quiz-start-btn">Start Quiz</button>
+            </div>
+
+            <!-- Quiz Question View -->
+            <div id="quiz-question-view" class="quiz-card hidden">
+                <div class="quiz-progress-container">
+                    <div class="quiz-progress-bar" id="quiz-progress-bar"></div>
+                </div>
+                <p class="quiz-progress-text" id="quiz-progress-text">Question 1 of 8</p>
+                <h3 class="quiz-question-text" id="quiz-question-text">Question goes here?</h3>
+                <div class="quiz-answers" id="quiz-answers">
+                    <!-- Answer buttons will be injected here -->
+                </div>
+            </div>
+
+            <!-- Quiz Result View -->
+            <div id="quiz-result-view" class="quiz-card hidden">
+                <h3 class="quiz-result-title">You are...</h3>
+                <div class="quiz-result-card">
+                    <img id="quiz-result-img" src="" alt="Your Character" class="quiz-result-img">
+                    <h4 id="quiz-result-name" class="quiz-result-name">CHARACTER NAME</h4>
+                    <p id="quiz-result-species" class="quiz-result-species">SPECIES</p>
+                </div>
+                <div class="quiz-result-details">
+                    <div class="quiz-result-block">
+                        <span class="label-bubble">PERSONALITY:</span>
+                        <span id="quiz-result-personality">Personality description...</span>
+                    </div>
+                    <div class="quiz-result-block">
+                        <span class="label-bubble">VIBE:</span>
+                        <span id="quiz-result-vibe">Vibe description...</span>
+                    </div>
+                </div>
+                <button id="quiz-retake-btn" class="back-button">↺ Retake Quiz</button>
             </div>
         </section>
 
@@ -456,6 +502,81 @@
             { file: 'spot_the_differences_1.pdf', answerKey: 'spot_the_differences_1_answer_key.pdf' }
         ];
 
+        const quizQuestions = [
+            {
+                question: "How do you handle a stressful deadline?",
+                answers: [
+                    { text: "Power through with discipline, no excuses", scores: { mirella: 2 } },
+                    { text: "Take a nap, it'll sort itself out", scores: { finn: 2 } },
+                    { text: "Panic a little, then bounce back with help from friends", scores: { glowdaze: 2 } },
+                    { text: "Make a detailed, color-coded plan", scores: { lana: 2 } }
+                ]
+            },
+            {
+                question: "In a group project, you're the one who...",
+                answers: [
+                    { text: "Sets high standards and holds everyone to them", scores: { mirella: 1, rexford: 1 } },
+                    { text: "Quietly notices when someone is struggling", scores: { rocky: 2 } },
+                    { text: "Brings all the creative ideas", scores: { glowdaze: 2 } },
+                    { text: "Organizes everything whether asked or not", scores: { lana: 2 } }
+                ]
+            },
+            {
+                question: "Your friends would say you show you care by...",
+                answers: [
+                    { text: "Actions, not words — like making them tea", scores: { rocky: 2 } },
+                    { text: "Jumping in to help immediately", scores: { lana: 2 } },
+                    { text: "Being openly enthusiastic and supportive", scores: { glowdaze: 2 } },
+                    { text: "Giving wise advice disguised as jokes", scores: { finn: 2 } }
+                ]
+            },
+            {
+                question: "Pick the phrase that fits you best:",
+                answers: [
+                    { text: "\"Discipline is my love language\"", scores: { mirella: 2 } },
+                    { text: "\"I made you tea\"", scores: { rocky: 2 } },
+                    { text: "\"I can do EVERYTHING!\"", scores: { glowdaze: 2 } },
+                    { text: "\"Or hear me out... we could NOT stress about this\"", scores: { finn: 2 } }
+                ]
+            },
+            {
+                question: "When you're passionate about something, you...",
+                answers: [
+                    { text: "Pursue excellence relentlessly", scores: { mirella: 2 } },
+                    { text: "Get intensely detail-oriented about it", scores: { lana: 2 } },
+                    { text: "Feel it deeply and aren't afraid to be dramatic", scores: { glowdaze: 2 } },
+                    { text: "Surprise everyone with bursts of intense focus, then nap", scores: { finn: 2 } }
+                ]
+            },
+            {
+                question: "Your ideal way to spend free time:",
+                answers: [
+                    { text: "Sketching or observing quietly", scores: { rocky: 2 } },
+                    { text: "Organizing and planning ahead", scores: { lana: 2 } },
+                    { text: "Trying something new and creative", scores: { glowdaze: 2 } },
+                    { text: "Napping strategically", scores: { finn: 2 } }
+                ]
+            },
+            {
+                question: "People are surprised to learn you're actually...",
+                answers: [
+                    { text: "Really supportive despite the tough exterior", scores: { rexford: 2 } },
+                    { text: "The emotional backbone of your friend group", scores: { rocky: 2 } },
+                    { text: "A reformed overachiever who learned from burnout", scores: { finn: 2 } },
+                    { text: "Intimidating but also legendary", scores: { mirella: 2 } }
+                ]
+            },
+            {
+                question: "Your approach to giving feedback:",
+                answers: [
+                    { text: "Razor-sharp but fair", scores: { rexford: 2 } },
+                    { text: "Gentle but deeply honest", scores: { rocky: 2 } },
+                    { text: "Loud and intensely passionate", scores: { lana: 2 } },
+                    { text: "Insightful comments disguised as offhand remarks", scores: { finn: 2 } }
+                ]
+            }
+        ];
+
         // --- Character Carousel Elements ---
         const listContainer = document.getElementById('characters-list');
         const detailContainer = document.getElementById('character-detail');
@@ -536,7 +657,127 @@
 
         let ACTIVITIES_PER_VIEW = 3;
         let currentActivityIndex = 0;
+    // --- Quiz Elements ---
+        const quizIntro = document.getElementById('quiz-intro');
+        const quizQuestionView = document.getElementById('quiz-question-view');
+        const quizResultView = document.getElementById('quiz-result-view');
+        const quizStartBtn = document.getElementById('quiz-start-btn');
+        const quizProgressBar = document.getElementById('quiz-progress-bar');
+        const quizProgressText = document.getElementById('quiz-progress-text');
+        const quizQuestionText = document.getElementById('quiz-question-text');
+        const quizAnswersContainer = document.getElementById('quiz-answers');
+        const quizResultImg = document.getElementById('quiz-result-img');
+        const quizResultName = document.getElementById('quiz-result-name');
+        const quizResultSpecies = document.getElementById('quiz-result-species');
+        const quizResultPersonality = document.getElementById('quiz-result-personality');
+        const quizResultVibe = document.getElementById('quiz-result-vibe');
+        const quizRetakeBtn = document.getElementById('quiz-retake-btn');
 
+        let currentQuizQuestion = 0;
+        let quizScores = {};
+
+
+        // --- Quiz Functions ---
+        function initQuizScores() {
+            quizScores = {
+                glowdaze: 0,
+                rocky: 0,
+                lana: 0,
+                finn: 0,
+                rexford: 0,
+                mirella: 0
+            };
+        }
+
+        function startQuiz() {
+            initQuizScores();
+            currentQuizQuestion = 0;
+            quizIntro.classList.add('hidden');
+            quizResultView.classList.add('hidden');
+            quizQuestionView.classList.remove('hidden');
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const question = quizQuestions[currentQuizQuestion];
+            const totalQuestions = quizQuestions.length;
+
+            // Update progress
+            const progressPercent = (currentQuizQuestion / totalQuestions) * 100;
+            quizProgressBar.style.width = progressPercent + '%';
+            quizProgressText.innerText = `Question ${currentQuizQuestion + 1} of ${totalQuestions}`;
+
+            // Update question text
+            quizQuestionText.innerText = question.question;
+
+            // Clear and populate answer buttons
+            quizAnswersContainer.innerHTML = '';
+            question.answers.forEach((answer, index) => {
+                const btn = document.createElement('button');
+                btn.classList.add('quiz-answer-btn');
+                btn.innerText = answer.text;
+                btn.addEventListener('click', () => selectAnswer(index));
+                quizAnswersContainer.appendChild(btn);
+            });
+        }
+
+        function selectAnswer(answerIndex) {
+            const question = quizQuestions[currentQuizQuestion];
+            const selectedAnswer = question.answers[answerIndex];
+
+            // Add scores from selected answer
+            for (const [charId, points] of Object.entries(selectedAnswer.scores)) {
+                quizScores[charId] = (quizScores[charId] || 0) + points;
+            }
+
+            // Move to next question or show result
+            currentQuizQuestion++;
+            if (currentQuizQuestion < quizQuestions.length) {
+                displayQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            // Find character with highest score
+            let maxScore = 0;
+            let resultCharId = 'glowdaze'; // default
+
+            for (const [charId, score] of Object.entries(quizScores)) {
+                if (score > maxScore) {
+                    maxScore = score;
+                    resultCharId = charId;
+                }
+            }
+
+            // Find character data
+            const resultChar = characters.find(c => c.id === resultCharId);
+
+            // Update result view
+            quizResultImg.src = resultChar.img;
+            quizResultImg.style.filter = `drop-shadow(5px 5px 10px ${resultChar.shadow})`;
+            quizResultName.innerText = resultChar.name;
+            quizResultSpecies.innerText = resultChar.species;
+            quizResultPersonality.innerText = resultChar.personality;
+            quizResultVibe.innerText = resultChar.vibe;
+
+            // Update progress bar to 100%
+            quizProgressBar.style.width = '100%';
+
+            // Show result view
+            quizQuestionView.classList.add('hidden');
+            quizResultView.classList.remove('hidden');
+        }
+
+        function retakeQuiz() {
+            quizResultView.classList.add('hidden');
+            quizIntro.classList.remove('hidden');
+        }
+
+        // Quiz Event Listeners
+        quizStartBtn.addEventListener('click', startQuiz);
+        quizRetakeBtn.addEventListener('click', retakeQuiz);
 
         // --- Character Carousel Functions ---
         function renderCharacterCards() {
