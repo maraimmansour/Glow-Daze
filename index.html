@@ -443,7 +443,7 @@
             {
                 name: 'Mazes',
                 description: 'Help Glow Daze get to the other side of the maze!',
-                img: 'stickers/Glow Daze Um.PNG',
+                img: 'stickers/Glow Daze Um.png',
                 id: 'mazes'
             },
             {
@@ -1604,6 +1604,25 @@
             setDarkMode(event.target.checked);
         });
     </script>
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBa6J13m1a-BUxz4bWbuAOVinDFK8wcwKY",
+    authDomain: "glow-daze.firebaseapp.com",
+    projectId: "glow-daze",
+    storageBucket: "glow-daze.firebasestorage.app",
+    messagingSenderId: "420808444906",
+    appId: "1:420808444906:web:44e96b2395ad8907fa0093"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
 </body>
 
 </html>
