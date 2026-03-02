@@ -910,7 +910,6 @@ body.dark-mode .character-name {
     padding: 8px 15px;
     border-radius: 50px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transform: translateY(-20px);
 }
 
 #sticker-prev,
@@ -1165,6 +1164,29 @@ body.dark-mode .character-name {
     color: white;
     box-shadow: 0 0 15px var(--pink-bubble);
     transform: translateY(-2px);
+}
+
+.download-stickers-btn {
+    font-family: 'Sailors', Arial, sans-serif;
+    font-weight: 700;
+    padding: 15px 40px;
+    background-color: var(--pink-bubble);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none; 
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(183, 134, 156, 0.4);
+    margin-bottom: 30px; 
+}
+
+.download-stickers-btn:hover {
+    background-color: #9c6c7e;
+    transform: translateY(-3px) !important; /* Ensured hover effect is not overridden */
+    box-shadow: 0 6px 20px rgba(183, 134, 156, 0.5);
 }
 
 /* --- Hamburger Menu --- */
@@ -2223,3 +2245,4 @@ body.dark-mode .quiz-answer-btn:hover {
         font-size: 0.95rem;
     }
 }
+
